@@ -70,7 +70,9 @@ func Rogue():
 		should_move = true
 	
 func action_system():
-	print("action in progress")
+	in_action = true
+	#the action
+	in_action = false
 	
 func _on_turn_rogue_timeout() -> void:
 	print("now rogue")
