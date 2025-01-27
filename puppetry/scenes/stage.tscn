@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=3 format=3 uid="uid://cu0c8ehr4b1r2"]
+
+[ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_70lgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u00t"]
+size = Vector2(1166, 20)
 
 [node name="Stage" type="Node2D"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(500, 657)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_2u00t")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World"]
+position = Vector2(1163, -7)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D2"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_2u00t")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="World"]
+position = Vector2(6, -2)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D3"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_2u00t")
+
+[node name="Puppet" parent="." instance=ExtResource("1_70lgb")]
+position = Vector2(89, 614)
+
+[node name="Camera2D" type="Camera2D" parent="Puppet"]
+zoom = Vector2(5.27, 5.27)
+limit_left = 0
+limit_right = 1165
+limit_bottom = 655

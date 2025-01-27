@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuopyl61ictec"]
+
+[ext_resource type="Script" path="res://scripts/puppet.gd" id="1_ieyt7"]
+[ext_resource type="Texture2D" uid="uid://cp33drqhlskg6" path="res://asseets/characters/puppet.png" id="2_elmtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjqsb"]
+size = Vector2(19.292, 8.63762)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae2ex"]
+size = Vector2(24, 22)
+
+[node name="Puppet" type="CharacterBody2D"]
+position = Vector2(10, -10)
+script = ExtResource("1_ieyt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.190493, -0.499999)
+scale = Vector2(0.538099, 2.44245)
+shape = SubResource("RectangleShape2D_pjqsb")
+
+[node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
+one_shot = true
+
+[node name="Turn_back" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.119999, 0.119999)
+texture = ExtResource("2_elmtd")
+offset = Vector2(0, -5.755)
+
+[node name="action" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ae2ex")
+
+[connection signal="timeout" from="Turn_Rogue" to="." method="_on_turn_rogue_timeout"]
+[connection signal="timeout" from="Turn_back" to="." method="_on_turn_back_timeout"]
