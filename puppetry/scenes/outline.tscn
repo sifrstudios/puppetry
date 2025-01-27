@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdw6ogrd64ugn"]
+
+[ext_resource type="Texture2D" uid="uid://cg26nv4pqbu5c" path="res://assets/sprites/outline.png" id="1_ffabq"]
+[ext_resource type="Script" path="res://scripts/outline.gd" id="2_502ca"]
+[ext_resource type="Script" path="res://scripts/outline_interaction.gd" id="2_osh8c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5ra7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffabq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Outline" type="AnimatedSprite2D"]
+position = Vector2(-2, -146)
+sprite_frames = SubResource("SpriteFrames_k5ra7")
+autoplay = "default"
+script = ExtResource("2_502ca")
+
+[node name="OutlineInteraction" type="Area2D" parent="."]
+script = ExtResource("2_osh8c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineInteraction"]
+polygon = PackedVector2Array(-22.5, -146.5, -26.7, -137.5, -28.5, -137.5, -28.5, -121.2, -23.5, -105.3, -23.5, -104, -35.9, -99.5, -38.5, -99.5, -46.5, -88.5, -48.4, -88.5, -51.5, -31.6, -51.5, 3, -53.5, 8.39999, -53.5, 25.5, -39.2, 36.5, -32.6, 36.5, -34.5, 94.5, -34.5, 112.8, -39.5, 119.5, -41.5, 119.5, -41.5, 144.3, -39.5, 146.3, 42.2, 146.5, 44.5, 140.9, 44.5, 124, 38.7, 113.5, 36.5, 80.4, 36.5, 66.1, 32.5, 55, 32.5, 37.5, 44.4, 37.5, 53.4, 27.5, 53.5, -5.3, 48.2, -38.5, 47.5, -38.5, 46.5, -84.5, 46.5, -88.3, 38.5, -97.3, 38.5, -98.9, 30.8, -101.5, 25.3, -101.5, 21.9, -104.9, 25.5, -117.2, 25.5, -135, 19.5, -146.2)
+
+[connection signal="mouse_entered" from="OutlineInteraction" to="OutlineInteraction" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="OutlineInteraction" to="OutlineInteraction" method="_on_mouse_exited"]
