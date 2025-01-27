@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=5 format=3 uid="uid://cu0c8ehr4b1r2"]
 
 [ext_resource type="PackedScene" uid="uid://c8eiwkb2q2b4x" path="res://scenes/puppet.tscn" id="1_ab6ei"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
-[ext_resource type="PackedScene" uid="uid://bdw6ogrd64ugn" path="res://scenes/outline.tscn" id="2_7j6bh"]
+[ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
@@ -14,12 +15,34 @@ colour = "red"
 
 [node name="Outlines" type="Node2D" parent="."]
 
-[node name="2_1" parent="Outlines" instance=ExtResource("2_7j6bh")]
-position = Vector2(586.285, 314.715)
-scale = Vector2(0.51, 0.51)
+[node name="2_1" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 563.0
+offset_top = 130.0
+offset_right = 670.0
+offset_bottom = 423.0
 pos = 1
 
-[node name="2_2" parent="Outlines" instance=ExtResource("2_7j6bh")]
-position = Vector2(670.285, 313.715)
-scale = Vector2(0.51, 0.51)
+[node name="2_2" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 685.0
+offset_top = 130.0
+offset_right = 792.0
+offset_bottom = 423.0
 pos = 2
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="one_up" type="Marker2D" parent="Positions"]
+position = Vector2(617, 274)
+
+[node name="one_down" type="Marker2D" parent="Positions"]
+position = Vector2(617, 553)
+
+[node name="two_up" type="Marker2D" parent="Positions"]
+position = Vector2(741, 274)
+
+[node name="two_down" type="Marker2D" parent="Positions"]
+position = Vector2(741, 555)
+
+[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
+
+[editable path="ControlHub"]

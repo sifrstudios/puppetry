@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/puppet_interaction.gd" id="2_8p47d"]
 [ext_resource type="Script" path="res://scripts/puppet.gd" id="2_i68tq"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_grtil"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtrj0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -15,11 +15,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Puppet" type="AnimatedSprite2D"]
+[node name="Puppet" type="CharacterBody2D"]
 position = Vector2(539, 334)
-sprite_frames = SubResource("SpriteFrames_grtil")
-autoplay = "default"
 script = ExtResource("2_i68tq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wtrj0")
 
 [node name="PuppetInteraction" type="Area2D" parent="."]
 script = ExtResource("2_8p47d")
