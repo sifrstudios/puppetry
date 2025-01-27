@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=4 format=3 uid="uid://cu0c8ehr4b1r2"]
 
 [ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_70lgb"]
+[ext_resource type="Texture2D" uid="uid://diixegahchhnc" path="res://icon.svg" id="1_vb80s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2u00t"]
 size = Vector2(1166, 20)
 
 [node name="Stage" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1190.0
+offset_bottom = 672.0
+texture = ExtResource("1_vb80s")
 
 [node name="World" type="Node" parent="."]
 
@@ -32,10 +38,17 @@ rotation = 1.5708
 position = Vector2(80, 0)
 shape = SubResource("RectangleShape2D_2u00t")
 
-[node name="Puppet" parent="." instance=ExtResource("1_70lgb")]
+[node name="Puppet" parent="." groups=["puppets"] instance=ExtResource("1_70lgb")]
 position = Vector2(89, 614)
+in_action = false
+is_rogue = false
+beside_rogue = false
 
-[node name="Camera2D" type="Camera2D" parent="Puppet"]
+[node name="Puppet2" parent="." groups=["rogue_puppets"] instance=ExtResource("1_70lgb")]
+position = Vector2(168, 613)
+
+[node name="Camera2D" type="Camera2D" parent="Puppet2"]
+position = Vector2(-79, 1)
 zoom = Vector2(5.27, 5.27)
 limit_left = 0
 limit_right = 1165
