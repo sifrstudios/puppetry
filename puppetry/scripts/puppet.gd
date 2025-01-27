@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+signal move_puppet
+
+@export var colour : String
+@onready var outline_appear = false
+
 @onready var turn_rogue: Timer = $Turn_Rogue
 @onready var turn_back: Timer = $Turn_back
 @onready var action: Timer = $action

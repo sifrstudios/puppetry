@@ -1,55 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=5 format=3 uid="uid://cu0c8ehr4b1r2"]
 
-[ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_70lgb"]
-[ext_resource type="Texture2D" uid="uid://diixegahchhnc" path="res://icon.svg" id="1_vb80s"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u00t"]
-size = Vector2(1166, 20)
+[ext_resource type="PackedScene" uid="uid://c8eiwkb2q2b4x" path="res://scenes/puppet.tscn" id="1_ab6ei"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
+[ext_resource type="PackedScene" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="PackedScene" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 
 [node name="Stage" type="Node2D"]
+script = ExtResource("1_exqxp")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1190.0
-offset_bottom = 672.0
-texture = ExtResource("1_vb80s")
+[node name="Puppet" parent="." instance=ExtResource("1_ab6ei")]
+position = Vector2(67, 593)
+scale = Vector2(0.745, 0.745)
+colour = "red"
 
-[node name="World" type="Node" parent="."]
+[node name="Outlines" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="World"]
-position = Vector2(500, 657)
+[node name="2_1" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 563.0
+offset_top = 130.0
+offset_right = 670.0
+offset_bottom = 423.0
+pos = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
-position = Vector2(80, 0)
-shape = SubResource("RectangleShape2D_2u00t")
+[node name="2_2" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 685.0
+offset_top = 130.0
+offset_right = 792.0
+offset_bottom = 423.0
+pos = 2
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="World"]
-position = Vector2(1163, -7)
-rotation = 1.5708
+[node name="Positions" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D2"]
-position = Vector2(80, 0)
-shape = SubResource("RectangleShape2D_2u00t")
+[node name="one_up" type="Marker2D" parent="Positions"]
+position = Vector2(617, 274)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="World"]
-position = Vector2(6, -2)
-rotation = 1.5708
+[node name="one_down" type="Marker2D" parent="Positions"]
+position = Vector2(617, 553)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D3"]
-position = Vector2(80, 0)
-shape = SubResource("RectangleShape2D_2u00t")
+[node name="two_up" type="Marker2D" parent="Positions"]
+position = Vector2(741, 274)
 
-[node name="Puppet" parent="." groups=["puppets"] instance=ExtResource("1_70lgb")]
-position = Vector2(89, 614)
-in_action = false
-is_rogue = false
-beside_rogue = false
+[node name="two_down" type="Marker2D" parent="Positions"]
+position = Vector2(741, 555)
 
-[node name="Puppet2" parent="." groups=["rogue_puppets"] instance=ExtResource("1_70lgb")]
-position = Vector2(168, 613)
+[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
 
-[node name="Camera2D" type="Camera2D" parent="Puppet2"]
-position = Vector2(-79, 1)
-zoom = Vector2(5.27, 5.27)
-limit_left = 0
-limit_right = 1165
-limit_bottom = 655
+[editable path="ControlHub"]
