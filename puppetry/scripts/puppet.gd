@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 					turn_rogue.start(rogue_timer_start)
 					print(turn_rogue.time_left)
 		else:
-			if in_action:
+			if Globals.in_action:
 				action_system()
 			else:
 				if turn_rogue.time_left <= 0:
@@ -75,9 +75,9 @@ func Rogue():
 		should_move = true
 	
 func action_system():
-	in_action = true
+	Globals.in_action = true
 	#the action
-	in_action = false
+	Globals.in_action = false
 	
 func _on_turn_rogue_timeout() -> void:
 	print("now rogue")
