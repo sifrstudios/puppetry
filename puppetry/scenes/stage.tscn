@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=4 format=3 uid="uid://cu0c8ehr4b1r2"]
+
+[ext_resource type="PackedScene" uid="uid://c8eiwkb2q2b4x" path="res://scenes/puppet.tscn" id="1_ab6ei"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
+[ext_resource type="PackedScene" uid="uid://bdw6ogrd64ugn" path="res://scenes/outline.tscn" id="2_7j6bh"]
 
 [node name="Stage" type="Node2D"]
+script = ExtResource("1_exqxp")
+
+[node name="Puppet" parent="." instance=ExtResource("1_ab6ei")]
+position = Vector2(67, 593)
+scale = Vector2(0.745, 0.745)
+colour = "red"
+
+[node name="Outlines" type="Node2D" parent="."]
+
+[node name="2_1" parent="Outlines" instance=ExtResource("2_7j6bh")]
+position = Vector2(586.285, 314.715)
+scale = Vector2(0.51, 0.51)
+pos = 1
+
+[node name="2_2" parent="Outlines" instance=ExtResource("2_7j6bh")]
+position = Vector2(670.285, 313.715)
+scale = Vector2(0.51, 0.51)
+pos = 2
