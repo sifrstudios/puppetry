@@ -75,9 +75,7 @@ func Rogue():
 		should_move = true
 	
 func action_system():
-	Globals.in_action = true
-	#the action
-	Globals.in_action = false
+	pass
 	
 func _on_turn_rogue_timeout() -> void:
 	print("now rogue")
