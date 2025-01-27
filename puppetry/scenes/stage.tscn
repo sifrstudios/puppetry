@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cu0c8ehr4b1r2"]
 
-[ext_resource type="PackedScene" uid="uid://c8eiwkb2q2b4x" path="res://scenes/puppet.tscn" id="1_ab6ei"]
+[ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_ab6ei"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
-[ext_resource type="PackedScene" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
-[ext_resource type="PackedScene" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
+[ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
