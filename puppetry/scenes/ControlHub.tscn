@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://l3eheggebeln"]
+
+[ext_resource type="Script" path="res://scripts/action_menu.gd" id="1_5x8uw"]
+
+[node name="ControlHub" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ActionMenu" type="ItemList" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 904.0
+offset_top = 360.0
+offset_right = 1224.0
+offset_bottom = 678.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+item_count = 5
+item_0/text = "Idle"
+item_1/text = "Raise Right Hand"
+item_2/text = "Raise Left Hand"
+item_3/text = "Crouch"
+item_4/text = "Jump"
+script = ExtResource("1_5x8uw")
+
+[connection signal="item_activated" from="ActionMenu" to="ActionMenu" method="_on_item_activated"]
