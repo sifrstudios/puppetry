@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Outline="*res://scripts/outline.gd"
+Global="*res://scripts/Global.gd"
 Globals="*res://scripts/globals.gd"
 Puppet="*res://scenes/puppet.tscn"
 PuppetInfo="*res://scripts/puppet_info.gd"
