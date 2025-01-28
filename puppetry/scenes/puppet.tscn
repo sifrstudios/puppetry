@@ -1,25 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8eiwkb2q2b4x"]
+[gd_scene load_steps=8 format=3 uid="uid://cuopyl61ictec"]
 
-[ext_resource type="Texture2D" uid="uid://2u0i6ifjqe0p" path="res://assets/sprites/puppet_idle.png" id="1_ansby"]
+[ext_resource type="Script" path="res://scripts/puppet.gd" id="1_ieyt7"]
 [ext_resource type="Script" path="res://scripts/puppet_interaction.gd" id="2_8p47d"]
-[ext_resource type="Script" path="res://scripts/puppet.gd" id="2_i68tq"]
+[ext_resource type="Texture2D" uid="uid://2u0i6ifjqe0p" path="res://assets/sprites/puppet_idle.png" id="3_ba617"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_grtil"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nmtw"]
+size = Vector2(20, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjqsb"]
+size = Vector2(19.292, 8.63762)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbels"]
+atlas = ExtResource("3_ba617")
+region = Rect2(0, 0, 107, 293)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lm0h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ansby")
+"texture": SubResource("AtlasTexture_fbels")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Puppet" type="AnimatedSprite2D"]
-position = Vector2(539, 334)
-sprite_frames = SubResource("SpriteFrames_grtil")
-autoplay = "default"
-script = ExtResource("2_i68tq")
+[node name="Puppet" type="CharacterBody2D"]
+position = Vector2(10, -10)
+collision_layer = 2
+script = ExtResource("1_ieyt7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3nmtw")
+
+[node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
+wait_time = 5.0
+one_shot = true
+
+[node name="Turn_back" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [node name="PuppetInteraction" type="Area2D" parent="."]
 script = ExtResource("2_8p47d")
@@ -27,5 +52,27 @@ script = ExtResource("2_8p47d")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PuppetInteraction"]
 polygon = PackedVector2Array(9.5, -146.2, 7.5, -146.5, -11.4, -146.5, -16.4, -140.5, -18.2, -140.5, -19.2, -133.5, -20.9, -133.5, -19.5, -125.2, -19.5, -119.1, -12.5, -102.2, -12.5, -97.5, -19.1, -97.5, -25.1, -93.5, -31.3, -93.5, -38.3, -86.5, -41.1, -86.5, -38.5, -76.5, -38.5, -74.5, -42.5, -34.6, -42.5, 6.7, -44.3, 8.5, -46.7, 8.5, -45.5, 19.7, -45.5, 22.4, -38.2, 28.5, -31.6, 28.5, -24.6, 20.5, -25.4, 63.5, -26.6, 63.5, -24.5, 115.6, -24.5, 117.5, -31.2, 122.5, -33.2, 122.5, -34.5, 131.4, -34.5, 140.5, -29.5, 144.4, -29.5, 146.4, -27.6, 146.5, 25.4, 146.5, 32.9, 143.5, 35.5, 143.5, 35.5, 123.5, 27.8, 118, 29.5, 108.7, 29.5, 89.3, 24.2, 56.5, 23.4, 56.5, 20.5, -8.60001, 20.5, -19.5, 27.9, 8.3, 25.5, 17.2, 25.5, 22.3, 33.7, 30.5, 39.4, 30.5, 46.4, 22.5, 49.1, 22.5, 45.5, 9.3, 45.5, -3.7, 39.2, -38.5, 39.5, -40.3, 39.5, -73.3, 36.7, -76.1, 39.5, -79.8, 39.5, -83.2, 33.5, -90.3, 33.5, -92.7, 21.4, -91.6, 16.4, -97.5, 11.9, -97.5, 16.5, -126.3, 16.5, -136.3, 9.5, -144.3)
 
+[node name="Right" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+
+[node name="Left" type="RayCast2D" parent="."]
+target_position = Vector2(-13, 0)
+
+[node name="Turn_corrupt" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.190493, -0.499999)
+scale = Vector2(0.538099, 2.44245)
+shape = SubResource("RectangleShape2D_pjqsb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6lm0h")
+autoplay = "default"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Turn_Rogue" to="." method="_on_turn_rogue_timeout"]
+[connection signal="timeout" from="Turn_back" to="." method="_on_turn_back_timeout"]
 [connection signal="mouse_entered" from="PuppetInteraction" to="PuppetInteraction" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PuppetInteraction" to="PuppetInteraction" method="_on_mouse_exited"]
+[connection signal="timeout" from="Turn_corrupt" to="." method="_on_turn_corrupt_timeout"]
