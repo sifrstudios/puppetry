@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Puppet="*res://scripts/puppet.gd"
 Globals="*res://scripts/globals.gd"
+Puppet="*res://scenes/puppet.tscn"
+PuppetInfo="*res://scripts/puppet_info.gd"
 
 [display]
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy3dlck6qn677"]
+
+[ext_resource type="Texture2D" uid="uid://dcewoptcfh63n" path="res://assets/sprites/scene rollup.png" id="1_tu1m7"]
+
+[node name="SceneRollup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.555, 0.555)
+texture = ExtResource("1_tu1m7")
