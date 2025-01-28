@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=8 format=3 uid="uid://cu0c8ehr4b1r2"]
 
-[ext_resource type="PackedScene" uid="uid://c8eiwkb2q2b4x" path="res://scenes/puppet.tscn" id="1_ab6ei"]
+[ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_ab6ei"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
-[ext_resource type="PackedScene" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
-[ext_resource type="PackedScene" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
+[ext_resource type="PackedScene" uid="uid://bdw6ogrd64ugn" path="res://scenes/outline.tscn" id="2_7j6bh"]
+[ext_resource type="Script" path="res://scripts/scene_generator.gd" id="2_216jj"]
+[ext_resource type="Script" path="res://scenes/scenes.gd" id="3_u4tsx"]
+[ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
+
+[node name="Scene_Generator" type="Node2D" parent="."]
+script = ExtResource("2_216jj")
+
+[node name="Scenes" type="Node2D" parent="."]
+script = ExtResource("3_u4tsx")
 
 [node name="Puppet" parent="." instance=ExtResource("1_ab6ei")]
 position = Vector2(67, 593)
