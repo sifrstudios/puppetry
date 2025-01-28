@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Puppet="*res://scripts/puppet.gd"
+Outline="*res://scripts/outline.gd"
+Global="*res://scripts/Global.gd"
 Globals="*res://scripts/globals.gd"
 
 [display]
