@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
 [ext_resource type="Script" path="res://scenes/scenes.gd" id="3_u4tsx"]
 [ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
-[ext_resource type="Texture2D" uid="uid://rmfalw8fn36d" path="res://scripts/64x64 textures (4).png" id="7_hbyo2"]
+[ext_resource type="PackedScene" uid="uid://b6unvncywxrp" path="res://scenes/scroll.tscn" id="7_6v3b1"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
@@ -18,11 +18,13 @@ script = ExtResource("2_216jj")
 script = ExtResource("3_u4tsx")
 
 [node name="Puppet" parent="." instance=ExtResource("1_ab6ei")]
-position = Vector2(67, 593)
-scale = Vector2(0.745, 0.745)
+visible = false
+position = Vector2(214, 590)
+scale = Vector2(2.24912, 2.24912)
 colour = "red"
 
 [node name="Outlines" type="Node2D" parent="."]
+visible = false
 
 [node name="2_1" parent="Outlines" instance=ExtResource("3_cyhp5")]
 offset_left = 563.0
@@ -39,6 +41,7 @@ offset_bottom = 423.0
 pos = 2
 
 [node name="Positions" type="Node2D" parent="."]
+visible = false
 
 [node name="one_up" type="Marker2D" parent="Positions"]
 position = Vector2(617, 274)
@@ -54,10 +57,21 @@ position = Vector2(741, 555)
 
 [node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(56, 451)
-scale = Vector2(2.8, 2.8)
-shadow_enabled = true
-texture = ExtResource("7_hbyo2")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Scroll" parent="CanvasLayer" instance=ExtResource("7_6v3b1")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
 
 [editable path="ControlHub"]
