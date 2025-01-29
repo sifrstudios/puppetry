@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	scene_manager()
+	#scene_manager()
 	pass
 
 func scene_gen():
@@ -35,17 +35,17 @@ func scene_gen():
 		print(scenes_arr)
 		print(numbers)
 	
-func scene_manager():
-	if(scenes_arr[Global.scene_key]==0):
-		scenes.scene1()
-	if(scenes_arr[Global.scene_key]==1):
-		scenes.scene2()
-	if(scenes_arr[Global.scene_key]==2):
-		scenes.scene3()
-	if(scenes_arr[Global.scene_key]==3):
-		scenes.scene4()
-	if(scenes_arr[Global.scene_key]==4):
-		scenes.scene5()
-	if(Global.scene_key>scenes_number-1):
-		Global.scene_key=0
-	pass
+#func scene_manager():
+	#if(scenes_arr[Global.scene_key]==0):
+		#scenes.scene1()
+	#if(scenes_arr[Global.scene_key]==1):
+		#scenes.scene2()
+	#if(scenes_arr[Global.scene_key]==2):
+		#scenes.scene3()
+	#if(scenes_arr[Global.scene_key]==3):
+		#scenes.scene4()
+	#if(scenes_arr[Global.scene_key]==4):
+		#scenes.scene5()
+	#if(Global.scene_key>scenes_number-1):
+		#Global.scene_key=0
+	#pass
