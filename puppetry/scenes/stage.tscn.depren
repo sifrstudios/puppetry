@@ -1,19 +1,67 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=13 format=3 uid="uid://cu0c8ehr4b1r2"]
 
 [ext_resource type="PackedScene" uid="uid://c735kbtj6dt17" path="res://scenes/puppet.tscn" id="1_ab6ei"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
-[ext_resource type="Texture2D" uid="uid://cfoxs5iyivibr" path="res://assets/sprites/stage design3.png" id="2_72x7s"]
+[ext_resource type="Texture2D" uid="uid://st7yxvaqvnk6" path="res://assets/sprites/stage design2.png" id="2_7hs2y"]
+[ext_resource type="Script" path="res://scripts/scene_generator.gd" id="2_216jj"]
 [ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="Script" path="res://scripts/scenes.gd" id="3_u4tsx"]
 [ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 [ext_resource type="PackedScene" uid="uid://dy3dlck6qn677" path="res://scenes/scene_rollup.tscn" id="6_qe361"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ts6x"]
-size = Vector2(162, 861)
+[sub_resource type="Animation" id="Animation_bwoik"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneRollup:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_0g38g"]
+resource_name = "scene_down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneRollup:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(602, -0.25, 0, 0.25, 0, 884, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_18i8f"]
+resource_name = "scene_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneRollup:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0, 602, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0ysx"]
+_data = {
+"RESET": SubResource("Animation_bwoik"),
+"scene_down": SubResource("Animation_0g38g"),
+"scene_up": SubResource("Animation_18i8f")
+}
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
 
-[node name="Stage Bg" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,10 +72,16 @@ offset_bottom = 1084.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.67, 0.67)
-texture = ExtResource("2_72x7s")
+texture = ExtResource("2_7hs2y")
+
+[node name="Scene_Generator" type="Node2D" parent="."]
+script = ExtResource("2_216jj")
+
+[node name="Scenes" type="Node2D" parent="."]
+script = ExtResource("3_u4tsx")
 
 [node name="Outlines" type="Node2D" parent="."]
-position = Vector2(60, -3)
+position = Vector2(126, -19)
 scale = Vector2(0.755, 0.755)
 
 [node name="1" parent="Outlines" instance=ExtResource("3_cyhp5")]
@@ -52,7 +106,6 @@ offset_bottom = 425.45
 pos = 3
 
 [node name="Positions" type="Node2D" parent="."]
-position = Vector2(-66, 16)
 
 [node name="one_up" type="Marker2D" parent="Positions"]
 position = Vector2(591, 184)
@@ -85,68 +138,58 @@ position = Vector2(240, 322)
 scale = Vector2(0.645, 0.645)
 colour = "blue"
 key = 2
-rogue_timer_start = 30.0
+rogue_timer_start = 100.0
 
 [node name="P3" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(312, 297)
 scale = Vector2(0.645, 0.645)
 colour = "yellow"
 key = 3
-rogue_timer_start = 40.0
+rogue_timer_start = 100.0
 
 [node name="P4" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(1084, 331)
 scale = Vector2(0.645, 0.645)
 colour = "red"
 key = 4
-rogue_timer_start = 45.0
+rogue_timer_start = 100.0
 
 [node name="P5" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(1138, 378)
 scale = Vector2(0.645, 0.645)
 colour = "blue"
 key = 5
-rogue_timer_start = 55.0
+rogue_timer_start = 100.0
 
 [node name="P6" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(1004, 295)
 scale = Vector2(0.645, 0.645)
 colour = "yellow"
 key = 6
-rogue_timer_start = 66.0
+rogue_timer_start = 100.0
 
 [node name="P7" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(289, 431)
 scale = Vector2(0.645, 0.645)
 colour = "blue"
 key = 7
-rogue_timer_start = 70.0
+rogue_timer_start = 100.0
 
 [node name="P8" parent="Puppets" instance=ExtResource("1_ab6ei")]
 position = Vector2(1046, 415)
 scale = Vector2(0.645, 0.645)
 colour = "red"
 key = 8
-rogue_timer_start = 30.0
+rogue_timer_start = 100.0
 
 [node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
 
 [node name="SceneRollup" parent="." instance=ExtResource("6_qe361")]
-position = Vector2(15, 902)
+position = Vector2(708, 892)
 
-[node name="Score" parent="SceneRollup" index="2"]
-visible = false
-
-[node name="World Boundary" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
-position = Vector2(-9, 361)
-shape = SubResource("RectangleShape2D_7ts6x")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary"]
-position = Vector2(1298, 358)
-shape = SubResource("RectangleShape2D_7ts6x")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a0ysx")
+}
 
 [editable path="ControlHub"]
-[editable path="SceneRollup"]

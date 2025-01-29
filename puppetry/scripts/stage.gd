@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var puppet: CharacterBody2D = $Puppet
 @onready var outlines: Node2D = $Outlines
 @onready var puppets: Node2D = $Puppets
 
@@ -19,14 +18,15 @@ var colour_chosen
 @onready var three_up: Marker2D = $Positions/three_up
 @onready var three_down: Marker2D = $Positions/three_down
 @onready var action_menu: ItemList = $ControlHub/ActionMenu
+@onready var score: Label = $SceneRollup/Score
 
 func _ready() -> void:
+	Scenes.display_scene.emit()
 	for puppet in puppets.get_children():
 		print(puppet)
 		puppet.get_child(0).pressed.connect(_on_puppet_clicked.bind(puppet.colour, puppet.key))
 	Puppet.move_puppet.connect(_on_move_puppet)
 	for button in outlines.get_children():
-		print("CONNECTED")
 		button.pressed.connect(_outline_chosen.bind(button.pos))
 	for outline in outlines.get_children():
 		outline.visible = false
@@ -34,11 +34,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	puppet_cutscene(delta, pos_chosen)
 
-func _outline_chosen(position):
-	print("outline selected position ", position)
+func _outline_chosen(pos):
+	print("outline selected position ", pos)
 	
 	# hide outlines that aren't selected
-	pos_chosen = position
+	pos_chosen = pos
 	Globals.slots_taken[pos_chosen - 1] = 1
 	
 	##
@@ -70,8 +70,8 @@ func _outline_chosen(position):
 
 func _on_move_puppet():
 	# action selected, puppet should start moving into position
-	
 	Globals.choosing_slot.emit(Globals.action_selected, pos_chosen, colour_chosen)
+	
 	
 	# remove outline of taken position
 	for outline in outlines.get_children():
@@ -141,20 +141,38 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 			1:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_up.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position == one_up.global_position:
+					slot_filled()
 					cutscene_on_up = false
 			2:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(two_up.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position == two_up.global_position:
+					slot_filled()
 					cutscene_on_up = false
 			3:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(three_up.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position == three_up.global_position:
+					slot_filled()
 					cutscene_on_up = false
-		# enable puppets again
-		for puppet in puppets.get_children():
-			puppet.get_child(0).disabled = false
-		
-		Globals.in_action = false
 
-	# action animation plays
-	# action timer starts
+func slot_filled():
+	# enable puppets again
+	for puppet in puppets.get_children():
+		puppet.get_child(0).disabled = false
+	# action manager function?
+	Globals.in_action = false
+	# check if scene ended for evaluation
+	for slot in Globals.slots_taken:
+		if slot == 1:
+			Globals.slots_full = true
+		else:
+			Globals.slots_full = false
+			break
+	if Globals.slots_full:
+		# disable puppets
+		for puppet in puppets.get_children():
+			puppet.get_tree().paused = true
+		Globals.evaluate.emit()
+		score.visible = true
+
+func reset():
+	pass
