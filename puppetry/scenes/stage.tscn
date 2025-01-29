@@ -4,11 +4,13 @@
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
 [ext_resource type="Texture2D" uid="uid://cfoxs5iyivibr" path="res://assets/sprites/stage design3.png" id="2_72x7s"]
 [ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="Script" path="res://scenes/scenes.gd" id="3_u4tsx"]
 [ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
 [ext_resource type="PackedScene" uid="uid://dy3dlck6qn677" path="res://scenes/scene_rollup.tscn" id="6_qe361"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ts6x"]
 size = Vector2(162, 861)
+[ext_resource type="Texture2D" uid="uid://rmfalw8fn36d" path="res://scripts/64x64 textures (4).png" id="7_hbyo2"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
@@ -147,6 +149,11 @@ shape = SubResource("RectangleShape2D_7ts6x")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary"]
 position = Vector2(1298, 358)
 shape = SubResource("RectangleShape2D_7ts6x")
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(56, 451)
+scale = Vector2(2.8, 2.8)
+shadow_enabled = true
+texture = ExtResource("7_hbyo2")
 
 [editable path="ControlHub"]
 [editable path="SceneRollup"]

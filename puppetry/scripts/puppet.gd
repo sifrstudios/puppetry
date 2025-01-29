@@ -14,10 +14,10 @@ signal move_puppet
 @onready var area_2d: Area2D = $Area2D
 @onready var button: TextureButton = $button
 
-@export var in_action = true;
-@export var is_rogue = true;
+@export var in_action = false;
+@export var is_rogue = false;
 @export var rogue_forever = false;
-@export var beside_rogue = true;
+@export var beside_rogue = false;
 @export var in_npc_area = false;
 @export var gain_control = false;
 @export var should_move = false
