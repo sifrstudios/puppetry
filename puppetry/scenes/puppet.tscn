@@ -3438,7 +3438,7 @@ position = Vector2(1.5, -3)
 sprite_frames = SubResource("SpriteFrames_6lm0h")
 animation = &"wave"
 autoplay = "idle"
-frame_progress = 0.0497563
+frame_progress = 0.473911
 
 [node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
 wait_time = 5.0
