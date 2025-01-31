@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 signal move_puppet
 
-@export var colour : String
-@onready var outline_appear = false
+@export var colour: String
+@export var key: int
 
 @onready var turn_rogue: Timer = $Turn_Rogue
 @onready var turn_back: Timer = $Turn_back
@@ -12,6 +12,7 @@ signal move_puppet
 @onready var left: RayCast2D = $Left
 @onready var turn_corrupt: Timer = $Turn_corrupt
 @onready var area_2d: Area2D = $Area2D
+@onready var button: TextureButton = $button
 
 @export var in_action = false;
 @export var is_rogue = false;
@@ -129,3 +130,7 @@ func _on_turn_corrupt_timeout() -> void:
 	corrupting = false
 	remove_from_group("puppets")
 	add_to_group("rogue_puppets")
+
+
+func _on_button_pressed() -> void:
+	print("CLICK")

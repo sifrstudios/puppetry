@@ -1,0 +1,268 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy3dlck6qn677"]
+
+[ext_resource type="Script" path="res://scripts/scene_rollup.gd" id="1_7t8q3"]
+[ext_resource type="Texture2D" uid="uid://dcewoptcfh63n" path="res://assets/sprites/scene rollup.png" id="1_tu1m7"]
+[ext_resource type="Texture2D" uid="uid://cban0vvcg1h7p" path="res://assets/sprites/raise right.png" id="3_nlibo"]
+[ext_resource type="Texture2D" uid="uid://c0bvvw8ivogl2" path="res://assets/sprites/idle.png" id="4_japqq"]
+[ext_resource type="Texture2D" uid="uid://u7lxeir5efou" path="res://assets/sprites/cross hands.png" id="5_o3l4p"]
+
+[sub_resource type="Animation" id="Animation_2rmfd"]
+resource_name = "scene_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roll:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Roll:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenes:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenes:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_1e3oj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roll:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Roll:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenes:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenes:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_lo2t3"]
+resource_name = "scene_down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roll:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Roll:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-297, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenes:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenes:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-297, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_macev"]
+_data = {
+"RESET": SubResource("Animation_1e3oj"),
+"scene_down": SubResource("Animation_lo2t3"),
+"scene_up": SubResource("Animation_2rmfd")
+}
+
+[node name="SceneRollup" type="Node2D"]
+position = Vector2(0, 890)
+script = ExtResource("1_7t8q3")
+
+[node name="Roll" type="Sprite2D" parent="."]
+position = Vector2(649, 0)
+scale = Vector2(0.555, 0.555)
+texture = ExtResource("1_tu1m7")
+
+[node name="Scenes" type="Node2D" parent="."]
+position = Vector2(649, 0)
+
+[node name="Scene1" type="Node2D" parent="Scenes"]
+
+[node name="raise_left" type="Sprite2D" parent="Scenes/Scene1"]
+position = Vector2(-93, -33)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("3_nlibo")
+
+[node name="idle" type="Sprite2D" parent="Scenes/Scene1"]
+position = Vector2(0, -31)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("4_japqq")
+
+[node name="cross" type="Sprite2D" parent="Scenes/Scene1"]
+position = Vector2(96, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="Scene2" type="Node2D" parent="Scenes"]
+
+[node name="cross" type="Sprite2D" parent="Scenes/Scene2"]
+position = Vector2(-86, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="raise_left" type="Sprite2D" parent="Scenes/Scene2"]
+position = Vector2(2.99999, -33)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("3_nlibo")
+
+[node name="idle" type="Sprite2D" parent="Scenes/Scene2"]
+position = Vector2(91, -31)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("4_japqq")
+
+[node name="Scene3" type="Node2D" parent="Scenes"]
+
+[node name="idle" type="Sprite2D" parent="Scenes/Scene3"]
+position = Vector2(-86, -31)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("4_japqq")
+
+[node name="cross" type="Sprite2D" parent="Scenes/Scene3"]
+position = Vector2(-1, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="raise_right" type="Sprite2D" parent="Scenes/Scene3"]
+position = Vector2(91, -31)
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("3_nlibo")
+
+[node name="Scene4" type="Node2D" parent="Scenes"]
+
+[node name="cross" type="Sprite2D" parent="Scenes/Scene4"]
+position = Vector2(-87, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="idle" type="Sprite2D" parent="Scenes/Scene4"]
+position = Vector2(-1, -31)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("4_japqq")
+
+[node name="cross2" type="Sprite2D" parent="Scenes/Scene4"]
+position = Vector2(88, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="Scene5" type="Node2D" parent="Scenes"]
+
+[node name="raise_left" type="Sprite2D" parent="Scenes/Scene5"]
+position = Vector2(-89, -29)
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("3_nlibo")
+
+[node name="cross" type="Sprite2D" parent="Scenes/Scene5"]
+position = Vector2(-1, -31)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_o3l4p")
+
+[node name="raise_right" type="Sprite2D" parent="Scenes/Scene5"]
+position = Vector2(91, -31)
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("3_nlibo")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 311.0
+offset_top = -616.0
+offset_right = 972.0
+offset_bottom = -478.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 101
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_macev")
+}

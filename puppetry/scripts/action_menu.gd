@@ -4,8 +4,7 @@ var actions = [
 	"idle",
 	"raise_right",
 	"raise_left",
-	"crouch",
-	"jump"
+	"cross"
 ]
 
 func _on_item_activated(index: int) -> void:
