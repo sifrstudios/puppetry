@@ -30,6 +30,7 @@ signal move_puppet
 
 
 func _ready() -> void:
+	self.modulate.b = 255
 	area_2d.connect("entered", Callable(self, "_on_area_2d_body_entered"))
 	add_to_group("puppets")
 	turn_rogue.connect("timeout", Callable(self, "_on_turn_rogue_timeout"))
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
+	
 	if is_rogue:
 		if rogue_forever:
 			Rogue()

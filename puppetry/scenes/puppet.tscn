@@ -3412,7 +3412,8 @@ animations = [{
 }]
 
 [node name="Puppet" type="CharacterBody2D"]
-position = Vector2(10, -10)
+position = Vector2(518, 334)
+scale = Vector2(5.32, 5.32)
 collision_layer = 2
 script = ExtResource("1_ieyt7")
 rogue_timer_start = 20.0
@@ -3435,10 +3436,11 @@ position = Vector2(1.5, -3)
 [node name="action" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.160001, 0.160001)
 sprite_frames = SubResource("SpriteFrames_6lm0h")
-animation = &"wave"
+animation = &"dance1"
 autoplay = "idle"
-frame_progress = 0.473911
+frame_progress = 0.219411
 
 [node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
 wait_time = 5.0
