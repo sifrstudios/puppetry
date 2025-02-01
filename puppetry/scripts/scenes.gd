@@ -21,7 +21,7 @@ var col4 = ["blue", "yellow", "yellow"]
 var act5 = ["raise_left", "cross", "raise_right"]
 var col5 = ["yellow", "blue", "blue"]
 
-var correct = false
+var correct = true
 
 func _ready() -> void:
 	Globals.evaluate.connect(evaluation)
@@ -33,69 +33,54 @@ func _on_choosing_slot(action, pos, colour):
 	current_colours[pos - 1] = colour
 
 func evaluation():
+	print("evaluate")
 	match Globals.current_scene:
 		1:
 			# check colours
-			for col in col1:
-				for current in current_colours:
-					if current != col:
-						correct = false
+			if current_colours != col1:
+				correct = false
 			# check actions
-			for act in act1:
-				for current in current_actions:
-					if current != act:
-						correct = false
+			if current_actions != act1:
+				correct = false
 		2:
 			# check colours
-			for col in col2:
-				for current in current_colours:
-					if current != col:
-						correct = false
+			if current_colours != col2:
+				correct = false
 			# check actions
-			for act in act2:
-				for current in current_actions:
-					if current != act:
-						correct = false
+			if current_actions != act2:
+				correct = false
 		3:
 			# check colours
-			for col in col3:
-				for current in current_colours:
-					if current != col:
-						correct = false
+			if current_colours != col3:
+				correct = false
 			# check actions
-			for act in act3:
-				for current in current_actions:
-					if current != act:
-						correct = false
+			if current_actions != act3:
+				correct = false
 		4:
 			# check colours
-			for col in col4:
-				for current in current_colours:
-					if current != col:
-						correct = false
+			if current_colours != col4:
+				correct = false
 			# check actions
-			for act in act4:
-				for current in current_actions:
-					if current != act:
-						correct = false
+			if current_actions != act4:
+				correct = false
 		5:
 			# check colours
-			for col in col5:
-				for current in current_colours:
-					if current != col:
-						correct = false
+			if current_colours != col5:
+				correct = false
 			# check actions
-			for act in act5:
-				for current in current_actions:
-					if current != act:
-						correct = false
+			if current_actions != act5:
+				correct = false
 	if correct:
 		# hightlight green
 		# increase score
 		print("CORRECT, END, RESET")
+		Globals.scene_counter += 1
+		#Globals.scene_key +=1
+		#Globals.current_scene +=1
 		# reset
 	else:
 		# hightlight red
 		# decrease score
 		print("WRONG, END, RESET")
+		#Globals.scene_key +=1
 		# reset
