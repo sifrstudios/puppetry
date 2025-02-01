@@ -1,7 +1,4 @@
 res://scenes/stage.tscn
-res://scenes/scene_generator.gd
 res://scenes/puppet.tscn
-res://scenes/outline.tscn
+res://scripts/stage.gd
 res://scripts/scene_generator.gd
-res://scenes/scenes.gd
-res://scripts/Global.gd
