@@ -206,12 +206,14 @@ func animations():
 		animation_state.Wave:
 			animatedSprite2D.play("wave")
 		animation_state.Run:
-			if velocity.x < 0:
+			if direction == 1:
+				animatedSprite2D.flip_h = false
 				animatedSprite2D.play("run")
-			elif velocity.x > 0:
-				animatedSprite2D.flip_h
+			elif direction == -1:
+				animatedSprite2D.flip_h = true
 				animatedSprite2D.play("run")
 		animation_state.RunRight:
+			animatedSprite2D.flip_h = false
 			animatedSprite2D.play("run")
 		animation_state.RunLeft:
 			animatedSprite2D.flip_h = true

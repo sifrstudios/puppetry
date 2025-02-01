@@ -16,7 +16,6 @@ var colour_chosen
 
 var direction: String
 
-var rogues = get_tree().get_nodes_in_group("rogue_puppets")
 var original_pos1
 var original_pos2
 var original_pos3
@@ -30,6 +29,7 @@ var return_to_original = false
 @onready var three_down: Marker2D = $Positions/three_down
 @onready var action_menu: ItemList = $ControlHub/ActionMenu
 @onready var score: Label = $SceneRollup/Score
+@onready var label: Label = $Label
 
 func _ready() -> void:
 	Scenes.display_scene.emit()
@@ -45,6 +45,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	puppet_cutscene(delta, pos_chosen)
+	label.text = str("Correct Scenes: ", Globals.scene_counter)
+	lose()
 
 func _outline_chosen(pos):
 	print("outline selected position ", pos)
@@ -243,5 +245,5 @@ func reset():
 	pass
 
 func lose():
-	if rogues.size() == 8:
-		pass
+	if get_tree().get_nodes_in_group("puppets").is_empty():
+		get_tree().change_scene_to_file("res://scenes/lose.tscn")
