@@ -1,7 +1,11 @@
 res://scenes/stage.tscn
-res://scenes/scene_generator.gd
 res://scenes/puppet.tscn
-res://scenes/outline.tscn
-res://scripts/scene_generator.gd
-res://scenes/scenes.gd
-res://scripts/Global.gd
+res://scenes/outline_button.tscn
+res://scenes/scene_maker.tscn
+res://scripts/stage.gd
+res://scripts/puppet.gd
+res://scripts/scene_maker.gd
+res://scripts/scenes.gd
+res://scripts/globals.gd
+res://scenes/rogue_timer.tscn
+res://scripts/rogue_timer.gd

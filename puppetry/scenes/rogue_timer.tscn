@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0tdton6fqhg"]
+
+[ext_resource type="Texture2D" uid="uid://c58llaecegtvg" path="res://assets/sprites/progress-bar-circle.png" id="1_n3fkj"]
+[ext_resource type="Script" path="res://scripts/rogue_timer.gd" id="1_t4r3c"]
+[ext_resource type="Texture2D" uid="uid://0sltbpgi3ln5" path="res://assets/sprites/progress-bar-frame.png" id="2_l5mc4"]
+
+[node name="RogueTimer" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t4r3c")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 33.0
+fill_mode = 4
+texture_under = ExtResource("1_n3fkj")
+texture_over = ExtResource("2_l5mc4")
+texture_progress = ExtResource("1_n3fkj")
+tint_under = Color(0, 0, 0, 0.368627)
+tint_progress = Color(0.352941, 0.784314, 0.0862745, 1)

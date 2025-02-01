@@ -1,3 +1,9 @@
+TextureProgressBar
+Node
+StaticBody2D
+Control
+TextureRect
+CanvasLayer
 Node2D
 RayCast2D
 Timer

@@ -10,6 +10,8 @@ var cutscene_on_up = false
 var cutscene_speed = 250
 var chosen_puppet
 var colour_chosen
+var direction: String
+
 
 @onready var one_up: Marker2D = $Positions/one_up
 @onready var one_down: Marker2D = $Positions/one_down
@@ -28,6 +30,7 @@ func _ready() -> void:
 	Puppet.move_puppet.connect(_on_move_puppet)
 	for button in outlines.get_children():
 		button.pressed.connect(_outline_chosen.bind(button.pos))
+		print(button, button.pos)
 	for outline in outlines.get_children():
 		outline.visible = false
 
@@ -70,6 +73,8 @@ func _outline_chosen(pos):
 
 func _on_move_puppet():
 	# action selected, puppet should start moving into position
+	
+	
 	Globals.choosing_slot.emit(Globals.action_selected, pos_chosen, colour_chosen)
 	
 	
@@ -81,8 +86,11 @@ func _on_move_puppet():
 	# hide all outlines
 	outlines.visible = false
 	
+	
 	# start animation
 	cutscene_on_down = true
+		
+		
 
 func _on_puppet_clicked(colour, key):
 	print("Colour: " + str(colour) + ", Key: " + str(key))
@@ -109,11 +117,16 @@ func outline_appears():
 					print("Outline name " + outline.name)
 					outline.visible = true
 					print(outline.visible)
-		i = i + 1
+		i += 1
 	
 func puppet_cutscene(delta: float, pos_chosen) -> void:
 	if cutscene_on_down:
 		# disable puppets while puppet reaches action spot
+		if direction == "left":
+			chosen_puppet.current_animation_state = Puppet.animation_state.RunLeft
+		elif direction == "right":
+			chosen_puppet.current_animation_state = Puppet.animation_state.RunRight
+			
 		for puppet in puppets.get_children():
 			puppet.get_child(0).disabled = true
 
@@ -121,31 +134,46 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 		match pos_chosen:
 			1:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_down.global_position, delta * cutscene_speed)
+				if chosen_puppet.global_position <= one_down.global_position:
+					direction = "right"
+				elif chosen_puppet.global_position > one_down.global_position:
+					direction = "left"
 				if chosen_puppet.global_position == one_down.global_position:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			2:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(two_down.global_position, delta * cutscene_speed)
+				if chosen_puppet.global_position <= two_down.global_position:
+					direction = "right"
+				elif chosen_puppet.global_position > two_down.global_position:
+					direction = "left"
 				if chosen_puppet.global_position == two_down.global_position:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			3:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(three_down.global_position, delta * cutscene_speed)
+				if chosen_puppet.global_position <= three_down.global_position:
+					direction = "right"
+				elif chosen_puppet.global_position > three_down.global_position:
+					direction = "left"
 				if chosen_puppet.global_position == three_down.global_position:
 					cutscene_on_up = true
 					cutscene_on_down = false
 		
 	if cutscene_on_up:
 		# move up
+		chosen_puppet.current_animation_state = Puppet.animation_state.Stairs
 		match pos_chosen:
 			1:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_up.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position == one_up.global_position:
+					print("should")
 					slot_filled()
 					cutscene_on_up = false
 			2:
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(two_up.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position == two_up.global_position:
+					print("should")
 					slot_filled()
 					cutscene_on_up = false
 			3:
@@ -156,11 +184,14 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 
 func slot_filled():
 	# enable puppets again
+	Globals.puppet_key = chosen_puppet.key
+	Globals.previous_action = Globals.action_selected
 	for puppet in puppets.get_children():
 		puppet.get_child(0).disabled = false
 	# action manager function?
 	Globals.in_action = false
 	# check if scene ended for evaluation
+	
 	for slot in Globals.slots_taken:
 		if slot == 1:
 			Globals.slots_full = true

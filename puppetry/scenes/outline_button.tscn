@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3qjb8nuepsn1"]
 
-[ext_resource type="Texture2D" uid="uid://cg26nv4pqbu5c" path="res://assets/sprites/outline.png" id="1_1id5h"]
+[ext_resource type="Texture2D" uid="uid://mdb4i2a2eij8" path="res://assets/poses/outline/idle/0002.png" id="1_u2tod"]
 [ext_resource type="Script" path="res://scripts/outline_button.gd" id="2_ky42r"]
 
 [node name="OutlineButton" type="TextureButton"]
@@ -8,8 +8,9 @@ offset_left = -52.0
 offset_top = -294.0
 offset_right = 55.0
 offset_bottom = -1.0
-texture_normal = ExtResource("1_1id5h")
-texture_pressed = ExtResource("1_1id5h")
-texture_hover = ExtResource("1_1id5h")
-texture_disabled = ExtResource("1_1id5h")
+texture_normal = ExtResource("1_u2tod")
+texture_pressed = ExtResource("1_u2tod")
+texture_hover = ExtResource("1_u2tod")
+texture_disabled = ExtResource("1_u2tod")
+stretch_mode = 0
 script = ExtResource("2_ky42r")
