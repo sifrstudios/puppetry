@@ -1,6 +1,6 @@
-TextureProgressBar
-Node
 StaticBody2D
+Node
+TextureProgressBar
 Control
 TextureRect
 CanvasLayer

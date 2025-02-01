@@ -298,14 +298,17 @@ position = Vector2(307, 1525)
 [node name="Score" parent="SceneRollup" index="2"]
 visible = false
 
-[node name="World Boundary" type="StaticBody2D" parent="."]
-collision_layer = 2
+[node name="World Boundary" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
+[node name="StaticBody2D" type="StaticBody2D" parent="World Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary/StaticBody2D"]
 position = Vector2(151, 522)
 shape = SubResource("RectangleShape2D_7ts6x")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="World Boundary"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary/StaticBody2D2"]
 position = Vector2(1768, 515)
 shape = SubResource("RectangleShape2D_7ts6x")
 

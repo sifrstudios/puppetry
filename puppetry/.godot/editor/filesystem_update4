@@ -1,11 +1,1 @@
 res://scenes/stage.tscn
-res://scenes/puppet.tscn
-res://scenes/outline_button.tscn
-res://scenes/scene_maker.tscn
-res://scripts/stage.gd
-res://scripts/puppet.gd
-res://scripts/scene_maker.gd
-res://scripts/scenes.gd
-res://scripts/globals.gd
-res://scenes/rogue_timer.tscn
-res://scripts/rogue_timer.gd
