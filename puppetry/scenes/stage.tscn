@@ -1,20 +1,128 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu0c8ehr4b1r2"]
+[gd_scene load_steps=23 format=3 uid="uid://cu0c8ehr4b1r2"]
 
 [ext_resource type="PackedScene" uid="uid://cuopyl61ictec" path="res://scenes/puppet.tscn" id="1_ab6ei"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_exqxp"]
 [ext_resource type="Texture2D" uid="uid://cfoxs5iyivibr" path="res://assets/sprites/stage design3.png" id="2_72x7s"]
+[ext_resource type="Texture2D" uid="uid://dxaqcrk84a1bp" path="res://assets/Stage/background.png" id="2_gsd4m"]
 [ext_resource type="PackedScene" uid="uid://b3qjb8nuepsn1" path="res://scenes/outline_button.tscn" id="3_cyhp5"]
+[ext_resource type="Texture2D" uid="uid://l20ursrtb02p" path="res://assets/Stage/columns_2.png" id="3_mk65y"]
 [ext_resource type="PackedScene" uid="uid://l3eheggebeln" path="res://scenes/ControlHub.tscn" id="4_egmb0"]
+[ext_resource type="Texture2D" uid="uid://bgumuhaatdajh" path="res://assets/Stage/coulisse_1.png" id="4_hnj3u"]
+[ext_resource type="Texture2D" uid="uid://cmxc7mmsfmv7e" path="res://assets/Stage/coulisse_3.png" id="5_gvxr0"]
+[ext_resource type="Texture2D" uid="uid://buyiwdhgndcfy" path="res://assets/Stage/stage.png" id="5_npiok"]
 [ext_resource type="PackedScene" uid="uid://dy3dlck6qn677" path="res://scenes/scene_rollup.tscn" id="6_qe361"]
+[ext_resource type="Texture2D" uid="uid://doqr3croctrxj" path="res://assets/Stage/coulisse_2.png" id="6_s70d0"]
 [ext_resource type="PackedScene" uid="uid://b6unvncywxrp" path="res://scenes/scroll.tscn" id="7_6v3b1"]
+[ext_resource type="Texture2D" uid="uid://cye8w20fetvxt" path="res://assets/Stage/coulisse_4.png" id="7_mopyh"]
+[ext_resource type="Texture2D" uid="uid://but0wivty302q" path="res://assets/Stage/wall_1.png" id="8_11jej"]
+[ext_resource type="Texture2D" uid="uid://dnuhi1bekwjhy" path="res://assets/Stage/coulisse_5.png" id="8_tt6d8"]
+[ext_resource type="Texture2D" uid="uid://dvjc3g7cr611n" path="res://assets/Stage/coulisse_6.png" id="9_mt6q3"]
+[ext_resource type="Texture2D" uid="uid://0efi8kkpn6up" path="res://assets/Stage/columns_1.png" id="10_ofp14"]
+[ext_resource type="Texture2D" uid="uid://bo88t3g0gigtf" path="res://assets/Stage/speaker_1.png" id="11_wjvan"]
+[ext_resource type="Texture2D" uid="uid://c4hdwlbb31aon" path="res://assets/Stage/speaker_2.png" id="12_ncuma"]
+[ext_resource type="Texture2D" uid="uid://b0yxslr6udx1l" path="res://assets/Stage/stairs.png" id="15_ffkdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ts6x"]
-size = Vector2(162, 861)
+size = Vector2(162, 1493.25)
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_exqxp")
 
+[node name="Stage" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="Stage"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = -16.0
+offset_top = -42.0
+offset_right = 1952.0
+offset_bottom = 1088.0
+texture = ExtResource("2_gsd4m")
+expand_mode = 1
+
+[node name="Stage" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_top = 905.0
+offset_right = 1923.0
+offset_bottom = 1080.0
+texture = ExtResource("5_npiok")
+
+[node name="CurtainStraightRight" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 1350.0
+offset_right = 1803.0
+offset_bottom = 934.0
+texture = ExtResource("4_hnj3u")
+
+[node name="CurtainRight" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 1354.0
+offset_top = 63.0
+offset_right = 1765.0
+offset_bottom = 945.0
+texture = ExtResource("5_gvxr0")
+
+[node name="CurtainStraightLeft" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 144.0
+offset_right = 597.0
+offset_bottom = 934.0
+texture = ExtResource("6_s70d0")
+
+[node name="CurtainLeft" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 174.0
+offset_top = 61.0
+offset_right = 585.0
+offset_bottom = 943.0
+texture = ExtResource("7_mopyh")
+
+[node name="WallCurtainsBack" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 365.0
+offset_top = 49.0
+offset_right = 1535.0
+offset_bottom = 278.0
+texture = ExtResource("8_tt6d8")
+
+[node name="WallCurtainsFront" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 232.0
+offset_top = 30.0
+offset_right = 1693.0
+offset_bottom = 316.0
+texture = ExtResource("9_mt6q3")
+
+[node name="Wall" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 258.0
+offset_top = 3.0
+offset_right = 1664.0
+offset_bottom = 109.0
+texture = ExtResource("8_11jej")
+
+[node name="stairs" type="TextureRect" parent="Stage/Control"]
+layout_mode = 1
+offset_left = 721.0
+offset_top = 847.0
+offset_right = 1176.0
+offset_bottom = 979.0
+texture = ExtResource("15_ffkdu")
+
 [node name="Stage Bg" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,129 +135,9 @@ grow_vertical = 2
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("2_72x7s")
 
-[node name="Outlines" type="Node2D" parent="."]
-position = Vector2(60, -3)
-scale = Vector2(0.755, 0.755)
-
-[node name="1" parent="Outlines" instance=ExtResource("3_cyhp5")]
-offset_left = 563.0
-offset_top = 130.0
-offset_right = 670.0
-offset_bottom = 423.0
-pos = 1
-
-[node name="2" parent="Outlines" instance=ExtResource("3_cyhp5")]
-offset_left = 685.0
-offset_top = 130.0
-offset_right = 792.0
-offset_bottom = 423.0
-pos = 2
-
-[node name="3" parent="Outlines" instance=ExtResource("3_cyhp5")]
-offset_left = 810.596
-offset_top = 132.45
-offset_right = 917.596
-offset_bottom = 425.45
-pos = 3
-
-[node name="Positions" type="Node2D" parent="."]
-position = Vector2(-66, 16)
-
-[node name="one_up" type="Marker2D" parent="Positions"]
-position = Vector2(591, 184)
-
-[node name="one_down" type="Marker2D" parent="Positions"]
-position = Vector2(594, 344)
-
-[node name="two_up" type="Marker2D" parent="Positions"]
-position = Vector2(684, 188)
-
-[node name="two_down" type="Marker2D" parent="Positions"]
-position = Vector2(684, 341)
-
-[node name="three_up" type="Marker2D" parent="Positions"]
-position = Vector2(779, 187)
-
-[node name="three_down" type="Marker2D" parent="Positions"]
-position = Vector2(782, 341)
-
-[node name="Puppets" type="Node2D" parent="."]
-
-[node name="P1" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(166, 353)
-scale = Vector2(0.645, 0.645)
-colour = "red"
-key = 1
-
-[node name="P2" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(240, 322)
-scale = Vector2(0.645, 0.645)
-colour = "blue"
-key = 2
-rogue_timer_start = 30.0
-
-[node name="P3" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(312, 297)
-scale = Vector2(0.645, 0.645)
-colour = "yellow"
-key = 3
-rogue_timer_start = 40.0
-
-[node name="P4" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1084, 331)
-scale = Vector2(0.645, 0.645)
-colour = "red"
-key = 4
-rogue_timer_start = 45.0
-
-[node name="P5" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1138, 378)
-scale = Vector2(0.645, 0.645)
-colour = "blue"
-key = 5
-rogue_timer_start = 55.0
-
-[node name="P6" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1004, 295)
-scale = Vector2(0.645, 0.645)
-colour = "yellow"
-key = 6
-rogue_timer_start = 66.0
-
-[node name="P7" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(289, 431)
-scale = Vector2(0.645, 0.645)
-colour = "blue"
-key = 7
-rogue_timer_start = 70.0
-
-[node name="P8" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1046, 415)
-scale = Vector2(0.645, 0.645)
-colour = "red"
-key = 8
-rogue_timer_start = 30.0
-
-[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
-
-[node name="SceneRollup" parent="." instance=ExtResource("6_qe361")]
-position = Vector2(15, 902)
-
-[node name="Score" parent="SceneRollup" index="2"]
-visible = false
-
-[node name="World Boundary" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary"]
-position = Vector2(-9, 361)
-shape = SubResource("RectangleShape2D_7ts6x")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary"]
-position = Vector2(1298, 358)
-shape = SubResource("RectangleShape2D_7ts6x")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+visible = false
 
 [node name="Scroll" parent="CanvasLayer" instance=ExtResource("7_6v3b1")]
 anchors_preset = 3
@@ -164,6 +152,165 @@ offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.69, 0.69)
+script = null
+
+[node name="Puppets" type="Node2D" parent="."]
+position = Vector2(169, 488)
+scale = Vector2(1.03151, 1.03151)
+
+[node name="P1" parent="Puppets" instance=ExtResource("1_ab6ei")]
+z_index = -2
+position = Vector2(145.418, 344.156)
+scale = Vector2(5.328, 5.328)
+key = 1
+rogue_timer_start = 30.0
+visibility = true
+
+[node name="P2" parent="Puppets" instance=ExtResource("1_ab6ei")]
+position = Vector2(240, 322)
+scale = Vector2(5.328, 5.328)
+Puppet_Color = 1
+key = 2
+rogue_timer_start = 45.0
+visibility = true
+
+[node name="P3" parent="Puppets" instance=ExtResource("1_ab6ei")]
+position = Vector2(977.208, 370.331)
+scale = Vector2(5.328, 5.328)
+Puppet_Color = 2
+key = 3
+rogue_timer_start = 13.0
+visibility = true
+
+[node name="P4" parent="Puppets" instance=ExtResource("1_ab6ei")]
+position = Vector2(1228.3, 333.492)
+scale = Vector2(5.328, 5.328)
+key = 4
+rogue_timer_start = 30.0
+visibility = true
+
+[node name="P5" parent="Puppets" instance=ExtResource("1_ab6ei")]
+position = Vector2(1364.02, 375.178)
+scale = Vector2(5.328, 5.328)
+Puppet_Color = 1
+key = 5
+rogue_timer_start = 22.0
+visibility = true
+
+[node name="P6" parent="Puppets" instance=ExtResource("1_ab6ei")]
+position = Vector2(480.848, 370.331)
+scale = Vector2(5.328, 5.328)
+Puppet_Color = 2
+key = 6
+rogue_timer_start = 30.0
+visibility = true
+
+[node name="Outlines" type="Node2D" parent="."]
+position = Vector2(556, 595)
+scale = Vector2(0.513805, 0.513805)
+
+[node name="1" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 465.157
+offset_top = 130.0
+offset_right = 593.157
+offset_bottom = 584.0
+pos = 1
+
+[node name="2" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 685.0
+offset_top = 130.0
+offset_right = 792.0
+offset_bottom = 423.0
+pos = 2
+
+[node name="3" parent="Outlines" instance=ExtResource("3_cyhp5")]
+offset_left = 922.529
+offset_top = 132.45
+offset_right = 1050.53
+offset_bottom = 586.45
+pos = 3
+
+[node name="Positions" type="Node2D" parent="."]
+position = Vector2(263, 589)
+
+[node name="one_up" type="Marker2D" parent="Positions"]
+position = Vector2(559.055, 188)
+
+[node name="one_down" type="Marker2D" parent="Positions"]
+position = Vector2(570, 368)
+
+[node name="two_up" type="Marker2D" parent="Positions"]
+position = Vector2(684, 188)
+
+[node name="two_down" type="Marker2D" parent="Positions"]
+position = Vector2(684, 341)
+
+[node name="three_up" type="Marker2D" parent="Positions"]
+position = Vector2(799.585, 188)
+
+[node name="three_down" type="Marker2D" parent="Positions"]
+position = Vector2(809.385, 341)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColumnLeft" type="TextureRect" parent="Control"]
+layout_mode = 1
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 283.0
+offset_bottom = 937.0
+texture = ExtResource("3_mk65y")
+
+[node name="ColumnRight" type="TextureRect" parent="Control"]
+layout_mode = 1
+offset_left = 1638.0
+offset_right = 1931.0
+offset_bottom = 941.0
+texture = ExtResource("10_ofp14")
+
+[node name="SpeakerLeft" type="TextureRect" parent="Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 276.0
+offset_top = 920.0
+offset_right = 533.0
+offset_bottom = 1025.0
+texture = ExtResource("11_wjvan")
+
+[node name="SpeakerRight" type="TextureRect" parent="Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 1428.0
+offset_top = 920.0
+offset_right = 1685.0
+offset_bottom = 1025.0
+texture = ExtResource("12_ncuma")
+
+[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
+
+[node name="SceneRollup" parent="." instance=ExtResource("6_qe361")]
+position = Vector2(307, 1525)
+
+[node name="Score" parent="SceneRollup" index="2"]
+visible = false
+
+[node name="World Boundary" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundary/StaticBody2D"]
+position = Vector2(151, 522)
+shape = SubResource("RectangleShape2D_7ts6x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World Boundary"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundary/StaticBody2D2"]
+position = Vector2(1768, 515)
+shape = SubResource("RectangleShape2D_7ts6x")
 
 [editable path="ControlHub"]
 [editable path="SceneRollup"]

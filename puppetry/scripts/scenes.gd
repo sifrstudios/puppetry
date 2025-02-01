@@ -6,7 +6,7 @@ var current_actions: Array[String] = ["", "", ""]
 var current_positions: Array[int] = [0,0,0]
 var current_colours: Array[String] = ["", "", ""]
 
-var act1 = ["raise_right, idle, cross"]
+var act1 = ["raise_right", "idle", "cross"]
 var col1 = ["red", "red", "blue"]
 
 var act2 = ["cross", "raise_left", "idle"]

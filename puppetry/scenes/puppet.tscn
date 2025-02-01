@@ -1,4 +1,4 @@
-[gd_scene load_steps=842 format=3 uid="uid://cuopyl61ictec"]
+[gd_scene load_steps=845 format=3 uid="uid://cuopyl61ictec"]
 
 [ext_resource type="Script" path="res://scripts/puppet.gd" id="1_ieyt7"]
 [ext_resource type="Texture2D" uid="uid://d1s646at13gxl" path="res://assets/animations/dummy/falling/0001.png" id="2_6a1pb"]
@@ -840,6 +840,14 @@
 [ext_resource type="Texture2D" uid="uid://c16qjcngb6pq1" path="res://assets/animations/dummy/dances/dance4/0027.png" id="428_mkdhi"]
 [ext_resource type="Texture2D" uid="uid://dt2sxyqaih105" path="res://assets/animations/dummy/dances/dance4/0028.png" id="429_ljl3e"]
 [ext_resource type="Texture2D" uid="uid://bd7ofq1wm62ht" path="res://assets/animations/dummy/dances/dance4/0029.png" id="430_yc0oy"]
+[ext_resource type="PackedScene" uid="uid://b0tdton6fqhg" path="res://scenes/rogue_timer.tscn" id="841_gemcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6q84"]
+size = Vector2(20, 37.2388)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5i05p"]
+radius = 1.83589
+height = 32.56
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6lm0h"]
 animations = [{
@@ -3413,34 +3421,39 @@ animations = [{
 
 [node name="Puppet" type="CharacterBody2D"]
 position = Vector2(518, 334)
-scale = Vector2(5.32, 5.32)
+scale = Vector2(13.4, 13.4)
 collision_layer = 2
 script = ExtResource("1_ieyt7")
-rogue_timer_start = 20.0
+rogue_timer_start = 15.0
 
 [node name="button" type="TextureButton" parent="."]
-offset_left = -53.0
-offset_top = -146.0
-offset_right = 54.0
-offset_bottom = 147.0
+offset_left = -5.89552
+offset_top = -17.5373
+offset_right = 101.104
+offset_bottom = 275.463
+scale = Vector2(0.159723, 0.144208)
+stretch_mode = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.5, -3)
+position = Vector2(-1.90735e-06, -0.298508)
+scale = Vector2(0.696169, 1.01614)
+shape = SubResource("RectangleShape2D_r6q84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.43894, 1.10015)
+shape = SubResource("CapsuleShape2D_5i05p")
 
 [node name="action" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.160001, 0.160001)
+scale = Vector2(0.0823891, 0.0823891)
 sprite_frames = SubResource("SpriteFrames_6lm0h")
-animation = &"dance1"
+animation = &"stairs_side"
 autoplay = "idle"
-frame_progress = 0.219411
 
 [node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
 wait_time = 5.0
@@ -3453,14 +3466,19 @@ one_shot = true
 [node name="Right" type="RayCast2D" parent="."]
 position = Vector2(4, 0)
 scale = Vector2(3.48, 3.48)
-target_position = Vector2(13, 0)
+target_position = Vector2(3.39681, 0)
 
 [node name="Left" type="RayCast2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(-3.58209, -0.223881)
 scale = Vector2(3.48, 3.48)
-target_position = Vector2(-13, 0)
+target_position = Vector2(-3.5169, 0)
 
 [node name="Turn_corrupt" type="Timer" parent="."]
+
+[node name="RogueTimer" parent="." instance=ExtResource("841_gemcj")]
+offset_top = -25.0746
+offset_bottom = -25.0746
+scale = Vector2(0.0862004, 0.0862004)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -6,6 +6,8 @@ var colour_selected
 var current_scene = 1
 var scene_counter=0
 var scene_key=0
+var puppet_key = 0
+var previous_action
 
 var slots_taken: Array[int] = [0,0,0]
 var slots_full = false
