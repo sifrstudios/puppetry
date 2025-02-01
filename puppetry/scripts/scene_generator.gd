@@ -1,4 +1,5 @@
 extends Node2D
+@onready var stage: Node2D = $"."
 
 var rng = RandomNumberGenerator.new()
 var previous_scene
@@ -25,6 +26,7 @@ func scene_manager():
 		Scenes.current_scene = 1
 		
 	if(scenes_arr[Globals.scene_key]==1):
+
 		Scenes.current_scene = 2
 		
 	if(scenes_arr[Globals.scene_key]==2):

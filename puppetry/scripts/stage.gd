@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var outlines: Node2D = $Outlines
 @onready var puppets: Node2D = $Puppets
+@onready var turn_rogue: Timer = $Turn_Rogue
+
 
 var pos_chosen
 var outline_chosen
@@ -10,8 +12,15 @@ var cutscene_on_up = false
 var cutscene_speed = 250
 var chosen_puppet
 var colour_chosen
+
+
 var direction: String
 
+var rogues = get_tree().get_nodes_in_group("rogue_puppets")
+var original_pos1
+var original_pos2
+var original_pos3
+var return_to_original = false
 
 @onready var one_up: Marker2D = $Positions/one_up
 @onready var one_down: Marker2D = $Positions/one_down
@@ -133,6 +142,7 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 		# move sideways (UPDATE IF ITS RIGHT OR LEFT)
 		match pos_chosen:
 			1:
+				original_pos1=chosen_puppet.global_position
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= one_down.global_position:
 					direction = "right"
@@ -142,6 +152,7 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			2:
+				original_pos2=chosen_puppet.global_position
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(two_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= two_down.global_position:
 					direction = "right"
@@ -151,6 +162,7 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			3:
+				original_pos3=chosen_puppet.global_position
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(three_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= three_down.global_position:
 					direction = "right"
@@ -206,4 +218,30 @@ func slot_filled():
 		score.visible = true
 
 func reset():
+	for puppet in puppets.get_children():
+		if puppet.global_position==one_up.global_position:
+			puppet.global_position.move_toward(one_down.global_position, cutscene_speed)
+			return_to_original=true
+		if puppet.global_position==two_up.global_position:
+			puppet.global_position.move_toward(two_down.global_position,  cutscene_speed)
+			return_to_original=true
+		if puppet.global_position==three_up.global_position:
+			puppet.global_position.move_toward(three_down.global_position,  cutscene_speed)
+			return_to_original=true
+			
+		if return_to_original:
+			if puppet.global_position==one_down.global_position:
+				puppet.global_position.move_toward(original_pos1,  cutscene_speed)
+				return_to_original=false
+		if puppet.global_position==two_down.global_position:
+				puppet.global_position.move_toward(original_pos2, cutscene_speed)
+				return_to_original=false
+		if puppet.global_position==three_down.global_position:
+				puppet.global_position.move_toward(original_pos3, cutscene_speed)
+				return_to_original=false
+		turn_rogue.start(Puppet.rogue_timer_start)
 	pass
+
+func lose():
+	if rogues.size() == 8:
+		pass
