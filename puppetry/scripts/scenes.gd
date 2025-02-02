@@ -1,7 +1,7 @@
 extends Node2D
 
 signal display_scene
-
+signal display_scene_again
 var current_actions: Array[String] = ["", "", ""]
 var current_positions: Array[int] = [0,0,0]
 var current_colours: Array[String] = ["", "", ""]
@@ -75,13 +75,13 @@ func evaluation():
 		# increase score
 		print("CORRECT, END, RESET")
 		Globals.scene_counter += 1
-		Globals.scene_key +=1
-		Globals.current_scene +=1
+		
+	
 		# reset
 	else:
 		# hightlight red
 		# decrease score
 		print("WRONG, END, RESET")
-		Globals.scene_key +=1
-		Globals.current_scene +=1
+		
+	
 		# reset
