@@ -1,4 +1,4 @@
-[gd_scene load_steps=851 format=3 uid="uid://cuopyl61ictec"]
+[gd_scene load_steps=849 format=3 uid="uid://cuopyl61ictec"]
 
 [ext_resource type="Script" path="res://scripts/puppet.gd" id="1_ieyt7"]
 [ext_resource type="Texture2D" uid="uid://d1s646at13gxl" path="res://assets/animations/dummy/falling/0001.png" id="2_6a1pb"]
@@ -844,8 +844,6 @@
 [ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="842_rypfc"]
 [ext_resource type="Script" path="res://scripts/states/idle.gd" id="843_600ro"]
 [ext_resource type="Script" path="res://scripts/states/rogue.gd" id="844_k754y"]
-[ext_resource type="Script" path="res://scripts/states/corrupting.gd" id="845_laa4m"]
-[ext_resource type="Script" path="res://scripts/states/get_corrupted.gd" id="846_7w455"]
 [ext_resource type="Script" path="res://scripts/states/acting.gd" id="847_4sxsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6q84"]
@@ -3430,7 +3428,7 @@ position = Vector2(518, 334)
 scale = Vector2(13.4, 13.4)
 collision_layer = 2
 script = ExtResource("1_ieyt7")
-rogue_timer_start = 15.0
+rogue_timer_start = 1.0
 
 [node name="button" type="TextureButton" parent="."]
 offset_left = -5.89552
@@ -3452,8 +3450,6 @@ shape = SubResource("RectangleShape2D_r6q84")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.43894, 1.10015)
 shape = SubResource("CapsuleShape2D_5i05p")
-
-[node name="action" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0823891, 0.0823891)
@@ -3490,22 +3486,21 @@ scale = Vector2(0.0862004, 0.0862004)
 script = ExtResource("842_rypfc")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("rogue_timer", "puppet")]
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("rogue_timer", "puppet", "timer_bar")]
 script = ExtResource("843_600ro")
 rogue_timer = NodePath("../../Turn_Rogue")
 puppet = NodePath("../..")
+timer_bar = NodePath("../../RogueTimer")
 
-[node name="Rogue" type="Node" parent="State Machine"]
+[node name="Rogue" type="Node" parent="State Machine" node_paths=PackedStringArray("puppet", "right", "left")]
 script = ExtResource("844_k754y")
+puppet = NodePath("../..")
+right = NodePath("../../Right")
+left = NodePath("../../Left")
 
-[node name="Corrupting" type="Node" parent="State Machine"]
-script = ExtResource("845_laa4m")
-
-[node name="GetCorrupted" type="Node" parent="State Machine"]
-script = ExtResource("846_7w455")
-
-[node name="Acting" type="Node" parent="State Machine"]
+[node name="Acting" type="Node" parent="State Machine" node_paths=PackedStringArray("puppet")]
 script = ExtResource("847_4sxsj")
+puppet = NodePath("../..")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

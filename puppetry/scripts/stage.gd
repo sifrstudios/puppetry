@@ -49,13 +49,12 @@ func _process(delta: float) -> void:
 	lose()
 
 func _outline_chosen(pos):
-	print("outline selected position ", pos)
-	
 	# hide outlines that aren't selected
 	pos_chosen = pos
 	Globals.slots_taken[pos_chosen - 1] = 1
 	
-	##
+	chosen_puppet.EnterAction.emit()
+	
 	print(Globals.slots_taken[pos_chosen - 1])
 	for slot in Globals.slots_taken:
 		print(str(slot) + " ")
@@ -214,11 +213,16 @@ func slot_filled():
 			break
 	if Globals.slots_full:
 		# disable puppets
-		for puppet in puppets.get_children():
-			puppet.get_tree().paused = true
+		#for puppet in puppets.get_children():
+			#puppet.get_tree().paused = true
 		Globals.evaluate.emit()
+		if Scenes.correct:
+			score.text = "+1 Scenes!"
+		else:
+			score.text = "Wrong Scene!"
 		score.visible = true
-
+		print("execute")
+		reset()
 func reset():
 	for puppet in puppets.get_children():
 		if puppet.global_position==one_up.global_position:
@@ -241,9 +245,8 @@ func reset():
 		if puppet.global_position==three_down.global_position:
 				puppet.global_position.move_toward(original_pos3, cutscene_speed)
 				return_to_original=false
-		turn_rogue.start(Puppet.rogue_timer_start)
-	pass
-
+		
+		print("reset")
 func lose():
 	if get_tree().get_nodes_in_group("puppets").is_empty():
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")

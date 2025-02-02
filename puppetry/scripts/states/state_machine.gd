@@ -1,5 +1,4 @@
 extends Node
-
 @export var initial_state: State
 
 var current_state: State
@@ -32,5 +31,5 @@ func on_child_transition(state, new_state_name):
 	
 	if current_state:
 		current_state.Exit()
-	new_state.enter()
+	new_state.Enter()
 	current_state = new_state
