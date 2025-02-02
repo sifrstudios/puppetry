@@ -3461,7 +3461,7 @@ sprite_frames = SubResource("SpriteFrames_6lm0h")
 animation = &"stairs_side"
 autoplay = "idle"
 
-[node name="Turn_Rogue" type="Timer" parent="." groups=["puppets", "rogue_puppets"]]
+[node name="Turn_Rogue" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
