@@ -1,4 +1,4 @@
-[gd_scene load_steps=845 format=3 uid="uid://cuopyl61ictec"]
+[gd_scene load_steps=851 format=3 uid="uid://cuopyl61ictec"]
 
 [ext_resource type="Script" path="res://scripts/puppet.gd" id="1_ieyt7"]
 [ext_resource type="Texture2D" uid="uid://d1s646at13gxl" path="res://assets/animations/dummy/falling/0001.png" id="2_6a1pb"]
@@ -841,6 +841,12 @@
 [ext_resource type="Texture2D" uid="uid://dt2sxyqaih105" path="res://assets/animations/dummy/dances/dance4/0028.png" id="429_ljl3e"]
 [ext_resource type="Texture2D" uid="uid://bd7ofq1wm62ht" path="res://assets/animations/dummy/dances/dance4/0029.png" id="430_yc0oy"]
 [ext_resource type="PackedScene" uid="uid://b0tdton6fqhg" path="res://scenes/rogue_timer.tscn" id="841_gemcj"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="842_rypfc"]
+[ext_resource type="Script" path="res://scripts/states/idle.gd" id="843_600ro"]
+[ext_resource type="Script" path="res://scripts/states/rogue.gd" id="844_k754y"]
+[ext_resource type="Script" path="res://scripts/states/corrupting.gd" id="845_laa4m"]
+[ext_resource type="Script" path="res://scripts/states/get_corrupted.gd" id="846_7w455"]
+[ext_resource type="Script" path="res://scripts/states/acting.gd" id="847_4sxsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6q84"]
 size = Vector2(20, 37.2388)
@@ -3479,6 +3485,27 @@ target_position = Vector2(-3.5169, 0)
 offset_top = -25.0746
 offset_bottom = -25.0746
 scale = Vector2(0.0862004, 0.0862004)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("842_rypfc")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("rogue_timer", "puppet")]
+script = ExtResource("843_600ro")
+rogue_timer = NodePath("../../Turn_Rogue")
+puppet = NodePath("../..")
+
+[node name="Rogue" type="Node" parent="State Machine"]
+script = ExtResource("844_k754y")
+
+[node name="Corrupting" type="Node" parent="State Machine"]
+script = ExtResource("845_laa4m")
+
+[node name="GetCorrupted" type="Node" parent="State Machine"]
+script = ExtResource("846_7w455")
+
+[node name="Acting" type="Node" parent="State Machine"]
+script = ExtResource("847_4sxsj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
