@@ -3,12 +3,13 @@ extends Control
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 func _ready() -> void:
-	hide()
+	self.hide()
 
-func set_value(value, rogue_start_time):
+func set_value(timer: Timer, rogue_start_time):
 	texture_progress_bar.max_value = rogue_start_time
-	texture_progress_bar.value = value
-	if value < rogue_start_time:
-		show()
-	else	:
-		hide()	
+	texture_progress_bar.value = timer.time_left
+	if !timer.is_stopped():
+		self.show()
+	elif timer.is_stopped() or timer.timeout:
+		self.hide()
+	

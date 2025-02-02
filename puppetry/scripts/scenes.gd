@@ -75,12 +75,13 @@ func evaluation():
 		# increase score
 		print("CORRECT, END, RESET")
 		Globals.scene_counter += 1
-		#Globals.scene_key +=1
-		#Globals.current_scene +=1
+		Globals.scene_key +=1
+		Globals.current_scene +=1
 		# reset
 	else:
 		# hightlight red
 		# decrease score
 		print("WRONG, END, RESET")
-		#Globals.scene_key +=1
+		Globals.scene_key +=1
+		Globals.current_scene +=1
 		# reset

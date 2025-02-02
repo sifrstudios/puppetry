@@ -15,11 +15,6 @@ var displayed_scene
 func _ready() -> void:
 	Scenes.display_scene.connect(_on_display_scene)
 
-func _process(delta: float) -> void:
-	if Scenes.correct:
-		score.text = "+1 Scenes!"
-	else:
-		score.text = "Wrong Scene!"
 
 func _on_display_scene():
 	print(Globals.current_scene)
