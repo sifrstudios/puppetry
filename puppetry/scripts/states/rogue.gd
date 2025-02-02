@@ -8,7 +8,7 @@ var direction: int
 var speed: int
 
 func randomize_speed():
-	return randi_range(250,300)
+	return randi_range(200,300)
 
 func chose_random():
 	var direction = 1

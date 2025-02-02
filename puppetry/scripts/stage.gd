@@ -245,7 +245,7 @@ func reset():
 		if puppet.global_position==three_down.global_position:
 				puppet.global_position.move_toward(original_pos3, cutscene_speed)
 				return_to_original=false
-		
+		puppet.ExitAction.emit()
 		print("reset")
 func lose():
 	if get_tree().get_nodes_in_group("puppets").is_empty():
