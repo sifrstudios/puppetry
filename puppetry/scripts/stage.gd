@@ -12,7 +12,7 @@ var cutscene_on_up = false
 var cutscene_speed = 250
 var chosen_puppet
 var colour_chosen
-
+var delta_Var
 
 var direction: String
 
@@ -52,6 +52,7 @@ func _ready() -> void:
 		outline.visible = false
 
 func _process(delta: float) -> void:
+	delta_Var=delta
 	puppet_cutscene(delta, pos_chosen)
 	label.text = str("Correct Scenes: ", Globals.scene_counter)
 	lose()
@@ -117,6 +118,15 @@ func _on_puppet_clicked(colour, key):
 	for puppet in puppets.get_children():
 		if puppet.key == key:
 			chosen_puppet = puppet
+			if pos_chosen==1:
+				print("pos_chosen=",str(pos_chosen))
+				original_pos1=chosen_puppet.global_position
+			elif pos_chosen==2:
+				print("pos_chosen=",str(pos_chosen))
+				original_pos2=chosen_puppet.global_position
+			elif pos_chosen==3:
+				print("pos_chosen=",str(pos_chosen))
+				original_pos3=chosen_puppet.global_position
 	print(chosen_puppet.name)
 	colour_chosen = chosen_puppet.colour
 	
@@ -151,7 +161,7 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 		# move sideways (UPDATE IF ITS RIGHT OR LEFT)
 		match pos_chosen:
 			1:
-				original_pos1=chosen_puppet.global_position
+
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= one_down.global_position:
 					direction = "right"
@@ -161,7 +171,6 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			2:
-				original_pos2=chosen_puppet.global_position
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(two_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= two_down.global_position:
 					direction = "right"
@@ -172,6 +181,7 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 					cutscene_on_down = false
 			3:
 				original_pos3=chosen_puppet.global_position
+				
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(three_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= three_down.global_position:
 					direction = "right"
@@ -234,26 +244,34 @@ func slot_filled():
 		reset()
 func reset():
 	for puppet in puppets.get_children():
+		#if puppet.global_position==one_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(one_down.global_position, delta_Var*cutscene_speed)
+			#
+		#if puppet.global_position==two_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(two_down.global_position,  delta_Var*cutscene_speed)
+			#
+		#if puppet.global_position==three_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(three_down.global_position, delta_Var*cutscene_speed)
+			#return_to_original=true
 		if puppet.global_position==one_up.global_position:
-			puppet.global_position.move_toward(one_down.global_position, cutscene_speed)
+			puppet.global_position=original_pos1
 			
 		if puppet.global_position==two_up.global_position:
-			puppet.global_position.move_toward(two_down.global_position,  cutscene_speed)
+			puppet.global_position=original_pos2
 			
 		if puppet.global_position==three_up.global_position:
-			puppet.global_position.move_toward(three_down.global_position,  cutscene_speed)
-			return_to_original=true
+			puppet.global_position=original_pos3
 			
-		if return_to_original:
-			if puppet.global_position==one_down.global_position:
-				puppet.global_position.move_toward(original_pos1,  cutscene_speed)
-				
-			if puppet.global_position==two_down.global_position:
-				puppet.global_position.move_toward(original_pos2, cutscene_speed)
-				
-			if puppet.global_position==three_down.global_position:
-				puppet.global_position.move_toward(original_pos3, cutscene_speed)
-				return_to_original=false
+		#if return_to_original:
+			#if puppet.global_position==one_down.global_position:
+				#puppet.global_position=puppet.global_position.move_toward(original_pos1,  delta_Var*cutscene_speed)
+				#
+			#if puppet.global_position==two_down.global_position:
+				#puppet.global_position=puppet.global_position.move_toward(original_pos2, delta_Var*cutscene_speed)
+				#
+			#if puppet.global_position==three_down.global_position:
+				#puppet.global_position=puppet.global_position.move_toward(original_pos3, delta_Var*cutscene_speed)
+				#return_to_original=false
 		puppet.ExitAction.emit()
 		print("reset")
 		animation_player.play("scene_down")
@@ -292,3 +310,5 @@ func _on_display_scene():
 			scene.visible = false
 			
 	animation_player.play("scene_up")
+
+	
