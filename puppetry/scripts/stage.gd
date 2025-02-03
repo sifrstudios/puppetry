@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var outlines: Node2D = $Outlines
 @onready var puppets: Node2D = $Puppets
-@onready var turn_rogue: Timer = $Turn_Rogue
-
 
 var pos_chosen
 var outline_chosen
@@ -12,13 +10,18 @@ var cutscene_on_up = false
 var cutscene_speed = 250
 var chosen_puppet
 var colour_chosen
-var delta_Var
-
+var hidden_outlines = [0,0,0]
 var direction: String
 
-var original_pos1
-var original_pos2
-var original_pos3
+@onready var op1: Marker2D = $op1
+@onready var op2: Marker2D = $op2
+@onready var op3: Marker2D = $op3
+@onready var op4: Marker2D = $op4
+@onready var op5: Marker2D = $op5
+@onready var op6: Marker2D = $op6
+
+
+
 var return_to_original = false
 var displayed_scene
 @onready var animation_player: AnimationPlayer = $SceneRollup/AnimationPlayer
@@ -40,29 +43,47 @@ var displayed_scene
 @onready var scenes: Node2D = $SceneRollup/Scenes
 
 func _ready() -> void:
+	# emit signal to display current scene
 	Scenes.display_scene.emit()
+	
+	# pass puppet info to puppet when clicked
 	for puppet in puppets.get_children():
-		print(puppet)
 		puppet.get_child(0).pressed.connect(_on_puppet_clicked.bind(puppet.colour, puppet.key))
+	
 	Puppet.move_puppet.connect(_on_move_puppet)
+	
+	# pass outline position when clicked
 	for button in outlines.get_children():
 		button.pressed.connect(_outline_chosen.bind(button.pos))
-		print(button, button.pos)
+	
+	# hide all outlines on ready
 	for outline in outlines.get_children():
 		outline.visible = false
 
 func _process(delta: float) -> void:
 	delta_Var=delta
 	puppet_cutscene(delta, pos_chosen)
+	
+	# display score
 	label.text = str("Correct Scenes: ", Globals.scene_counter)
+	
+	# disable rogue puppets
+	for puppet in puppets.get_children():
+		if puppet.is_in_group("rogue_puppets"):
+			puppet.get_child(0).disabled = true
+
+	# hide chosen outlines
+	for pos in hidden_outlines:
+		for outline in outlines.get_children():
+			if outline.pos == pos:
+				outline.visible = false
+	
 	lose()
 
 func _outline_chosen(pos):
 	# hide outlines that aren't selected
 	pos_chosen = pos
 	Globals.slots_taken[pos_chosen - 1] = 1
-	
-	chosen_puppet.EnterAction.emit()
 	
 	print(Globals.slots_taken[pos_chosen - 1])
 	for slot in Globals.slots_taken:
@@ -92,19 +113,15 @@ func _outline_chosen(pos):
 
 func _on_move_puppet():
 	# action selected, puppet should start moving into position
-	
-	
 	Globals.choosing_slot.emit(Globals.action_selected, pos_chosen, colour_chosen)
-	
 	
 	# remove outline of taken position
 	for outline in outlines.get_children():
 		if outline.pos == pos_chosen:
-			outline.queue_free()
+			hidden_outlines[pos_chosen - 1] = outline.pos
 	
 	# hide all outlines
 	outlines.visible = false
-	
 	
 	# start animation
 	cutscene_on_down = true
@@ -118,15 +135,8 @@ func _on_puppet_clicked(colour, key):
 	for puppet in puppets.get_children():
 		if puppet.key == key:
 			chosen_puppet = puppet
-			if pos_chosen==1:
-				print("pos_chosen=",str(pos_chosen))
-				original_pos1=chosen_puppet.global_position
-			elif pos_chosen==2:
-				print("pos_chosen=",str(pos_chosen))
-				original_pos2=chosen_puppet.global_position
-			elif pos_chosen==3:
-				print("pos_chosen=",str(pos_chosen))
-				original_pos3=chosen_puppet.global_position
+	chosen_puppet.EnterAction.emit()
+
 	print(chosen_puppet.name)
 	colour_chosen = chosen_puppet.colour
 	
@@ -147,21 +157,21 @@ func outline_appears():
 					print(outline.visible)
 		i += 1
 	
-func puppet_cutscene(delta: float, pos_chosen) -> void:
+func puppet_cutscene(delta: float, pos_chosen) -> void: # this has to be the stupidest way to move anything ever its almost impressive
 	if cutscene_on_down:
-		# disable puppets while puppet reaches action spot
+		# set direction of puppets
 		if direction == "left":
 			chosen_puppet.current_animation_state = Puppet.animation_state.RunLeft
 		elif direction == "right":
 			chosen_puppet.current_animation_state = Puppet.animation_state.RunRight
-			
+	
+		# disable puppets while puppet reaches action spot
 		for puppet in puppets.get_children():
 			puppet.get_child(0).disabled = true
 
-		# move sideways (UPDATE IF ITS RIGHT OR LEFT)
+		# move sideways
 		match pos_chosen:
 			1:
-
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(one_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= one_down.global_position:
 					direction = "right"
@@ -180,8 +190,6 @@ func puppet_cutscene(delta: float, pos_chosen) -> void:
 					cutscene_on_up = true
 					cutscene_on_down = false
 			3:
-				original_pos3=chosen_puppet.global_position
-				
 				chosen_puppet.global_position = chosen_puppet.global_position.move_toward(three_down.global_position, delta * cutscene_speed)
 				if chosen_puppet.global_position <= three_down.global_position:
 					direction = "right"
@@ -239,10 +247,21 @@ func slot_filled():
 		else:
 			score.text = "Wrong Scene!"
 		score.visible = true
-		print("execute")
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		reset()
+
 func reset():
+	# resetting global variables
+	Globals.action_selected = ""
+	Globals.position_selected = 0
+	Globals.colour_selected = ""
+	Globals.puppet_key = 0
+	Globals.previous_action = ""
+	Globals.slots_taken = [0,0,0]
+	Globals.slots_full = false
+	Globals.in_action = false
+	hidden_outlines = [0,0,0]
+	
 	for puppet in puppets.get_children():
 		#if puppet.global_position==one_up.global_position:
 			#puppet.global_position=puppet.global_position.move_toward(one_down.global_position, delta_Var*cutscene_speed)
@@ -254,61 +273,41 @@ func reset():
 			#puppet.global_position=puppet.global_position.move_toward(three_down.global_position, delta_Var*cutscene_speed)
 			#return_to_original=true
 		if puppet.global_position==one_up.global_position:
-			puppet.global_position=original_pos1
+			return_to_original = true
 			
-		if puppet.global_position==two_up.global_position:
-			puppet.global_position=original_pos2
+		elif puppet.global_position==two_up.global_position:
+			return_to_original = true
 			
-		if puppet.global_position==three_up.global_position:
-			puppet.global_position=original_pos3
+		elif puppet.global_position==three_up.global_position:
+			return_to_original = true
 			
-		#if return_to_original:
-			#if puppet.global_position==one_down.global_position:
-				#puppet.global_position=puppet.global_position.move_toward(original_pos1,  delta_Var*cutscene_speed)
-				#
-			#if puppet.global_position==two_down.global_position:
-				#puppet.global_position=puppet.global_position.move_toward(original_pos2, delta_Var*cutscene_speed)
-				#
-			#if puppet.global_position==three_down.global_position:
-				#puppet.global_position=puppet.global_position.move_toward(original_pos3, delta_Var*cutscene_speed)
-				#return_to_original=false
-		puppet.ExitAction.emit()
-		print("reset")
+		if return_to_original:
+			match puppet.key:
+				1:
+					print(puppet.global_position)
+					puppet.global_position = op1.global_position
+					print(puppet.global_position)
+				2:
+					puppet.global_position = op2.global_position
+				3:
+					puppet.global_position = op3.global_position
+				4:
+					puppet.global_position = op4.global_position
+				5:
+					puppet.global_position = op5.global_position
+				6:
+					puppet.global_position = op6.global_position
+			return_to_original = false
+		
+		puppet.ExitAction.emit() # no idea what this does bas khayfa ashelo
+		
+		# scene change
+
 		animation_player.play("scene_down")
-		score.visible=false
-		Globals.scene_key +=1
-		Scenes.display_scene_again.emit()
-		Scenes.display_scene_again.connect(_on_display_scene)
-		for slot in Globals.slots_taken:
-				slot=0
-				Globals.slots_full = false
+		score.visible = false
+		Globals.scene_key = Globals.scene_key + 1
+		Scenes.display_scene.emit()
+
 func lose():
 	if get_tree().get_nodes_in_group("puppets").is_empty():
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")
-
-func _on_display_scene():
-	print(Globals.current_scene)
-	match Globals.current_scene:
-		1:
-			displayed_scene = scene_1
-			scene_1.visible = true
-		2:
-			displayed_scene = scene_2
-			scene_2.visible = true
-		3:
-			displayed_scene = scene_3
-			scene_3.visible = true
-		4:
-			displayed_scene = scene_4
-			scene_4.visible = true
-		5:
-			displayed_scene = scene_5
-			scene_5.visible = true
-	print(displayed_scene)
-	for scene in scenes.get_children():
-		if scene != displayed_scene:
-			scene.visible = false
-			
-	animation_player.play("scene_up")
-
-	

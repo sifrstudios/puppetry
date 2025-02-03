@@ -3454,9 +3454,8 @@ shape = SubResource("CapsuleShape2D_5i05p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0823891, 0.0823891)
 sprite_frames = SubResource("SpriteFrames_6lm0h")
-animation = &"dance4"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.621944
 
 [node name="Turn_Rogue" type="Timer" parent="."]
 wait_time = 5.0
@@ -3508,3 +3507,5 @@ puppet = NodePath("../..")
 [connection signal="timeout" from="Turn_Rogue" to="." method="_on_turn_rogue_timeout"]
 [connection signal="timeout" from="Turn_back" to="." method="_on_turn_back_timeout"]
 [connection signal="timeout" from="Turn_corrupt" to="." method="_on_turn_corrupt_timeout"]
+
+[editable path="RogueTimer"]
