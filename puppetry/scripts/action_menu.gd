@@ -2,9 +2,10 @@ extends ItemList
 
 var actions = [
 	"idle",
-	"raise_right",
-	"raise_left",
-	"cross"
+	"kungfu",
+	"wave_arms",
+	"cross_wave",
+	"shuffle"
 ]
 
 func _on_item_activated(index: int) -> void:

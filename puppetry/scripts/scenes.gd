@@ -5,19 +5,19 @@ var current_actions: Array[String] = ["", "", ""]
 var current_positions: Array[int] = [0,0,0]
 var current_colours: Array[String] = ["", "", ""]
 
-var act1 = ["raise_right", "idle", "cross"]
+var act1 = ["kungfu", "idle", "cross_wave"]
 var col1 = ["red", "red", "blue"]
 
-var act2 = ["cross", "raise_left", "idle"]
+var act2 = ["cross_wave", "wave_arms", "idle"]
 var col2 = ["blue", "red", "yellow"]
 
-var act3 = ["idle", "cross", "raise_right"]
+var act3 = ["shuffle", "cross_wave", "kungfu"]
 var col3 = ["yellow", "blue", "red"]
 
-var act4 = ["cross", "idle", "cross"]
+var act4 = ["cross_wave", "idle", "shuffle"]
 var col4 = ["blue", "yellow", "yellow"]
 
-var act5 = ["raise_left", "cross", "raise_right"]
+var act5 = ["wave_arms", "idle", "shuffle"]
 var col5 = ["yellow", "blue", "blue"]
 
 var correct = true
