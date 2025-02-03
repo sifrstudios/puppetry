@@ -4,7 +4,7 @@ class_name Idle
 @export var rogue_timer: Timer
 @export var puppet: CharacterBody2D
 @export var timer_bar: Control
-
+var start_time = rogueTime()
 func Enter():
 	puppet.add_to_group("puppets")
 	rogue_timer.start(rogueTime())
@@ -21,12 +21,14 @@ func _on_turn_rogue_timeout():
 	Transitioned.emit(self, "rogue")
 
 func Physics_Update(delta: float):
-	timer_bar.set_value(rogue_timer, rogueTime())
+	timer_bar.set_value(rogue_timer, start_time)
 
 func on_enter_action():
 	Transitioned.emit(self, "acting")
+	
 func _on_reset_timers():
-	rogue_timer.start(rogueTime())
+	start_time = rogueTime()
+	rogue_timer.start(start_time)
 	
 func rogueTime():
-	return 15 * (3/Globals.scene_counter if Globals.scene_counter != 0 else 1)
+	return randi_range(15,30) * (3/Globals.scene_counter if Globals.scene_counter != 0 else 1)
