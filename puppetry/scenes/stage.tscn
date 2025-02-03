@@ -182,14 +182,14 @@ rogue_timer_start = 27.0
 visibility = true
 
 [node name="P4" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1228.3, 333.492)
+position = Vector2(1138.1, 353.811)
 scale = Vector2(5.328, 5.328)
 key = 4
 rogue_timer_start = 30.0
 visibility = true
 
 [node name="P5" parent="Puppets" instance=ExtResource("1_ab6ei")]
-position = Vector2(1364.02, 375.178)
+position = Vector2(1301.94, 371.26)
 scale = Vector2(5.328, 5.328)
 Puppet_Color = 1
 key = 5
@@ -218,11 +218,11 @@ position = Vector2(1177, 870)
 scale = Vector2(5.49589, 5.49589)
 
 [node name="op4" type="Marker2D" parent="."]
-position = Vector2(1436, 832)
+position = Vector2(1342.96, 852.959)
 scale = Vector2(5.49589, 5.49589)
 
 [node name="op5" type="Marker2D" parent="."]
-position = Vector2(1576, 875)
+position = Vector2(1511.96, 870.959)
 scale = Vector2(5.49589, 5.49589)
 
 [node name="op6" type="Marker2D" parent="."]
@@ -275,54 +275,50 @@ position = Vector2(799.585, 188)
 [node name="three_down" type="Marker2D" parent="Positions"]
 position = Vector2(809.385, 341)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColumnLeft" type="TextureRect" parent="Control"]
-layout_mode = 1
+[node name="ColumnLeft" type="TextureRect" parent="."]
 offset_left = -8.0
 offset_top = 2.0
 offset_right = 283.0
 offset_bottom = 937.0
 texture = ExtResource("3_mk65y")
 
-[node name="ColumnRight" type="TextureRect" parent="Control"]
-layout_mode = 1
+[node name="ColumnRight" type="TextureRect" parent="."]
 offset_left = 1638.0
 offset_right = 1931.0
 offset_bottom = 941.0
 texture = ExtResource("10_ofp14")
 
-[node name="SpeakerLeft" type="TextureRect" parent="Control"]
+[node name="SpeakerLeft" type="TextureRect" parent="."]
 z_index = 1
-layout_mode = 0
 offset_left = 276.0
 offset_top = 920.0
 offset_right = 533.0
 offset_bottom = 1025.0
 texture = ExtResource("11_wjvan")
 
-[node name="SpeakerRight" type="TextureRect" parent="Control"]
-z_index = 1
-layout_mode = 0
+[node name="SpeakerRight" type="TextureRect" parent="."]
 offset_left = 1428.0
 offset_top = 920.0
 offset_right = 1685.0
 offset_bottom = 1025.0
 texture = ExtResource("12_ncuma")
 
-[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
-
 [node name="SceneRollup" parent="." instance=ExtResource("6_qe361")]
-position = Vector2(301, 1361)
+position = Vector2(760, 959)
+scale = Vector2(0.675, 0.675)
+
+[node name="Roll" parent="SceneRollup" index="0"]
+position = Vector2(1454, -4)
+
+[node name="Scenes" parent="SceneRollup" index="1"]
+position = Vector2(1458, 5)
 
 [node name="Score" parent="SceneRollup" index="2"]
 visible = false
 offset_top = -824.0
 offset_bottom = -686.0
+
+[node name="ControlHub" parent="." instance=ExtResource("4_egmb0")]
 
 [node name="World Boundary" type="Node" parent="."]
 
@@ -346,5 +342,5 @@ offset_bottom = 280.0
 theme_override_font_sizes/font_size = 35
 text = "Correct Scenes:"
 
-[editable path="ControlHub"]
 [editable path="SceneRollup"]
+[editable path="ControlHub"]

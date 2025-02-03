@@ -1,57 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy3dlck6qn677"]
+[gd_scene load_steps=16 format=3 uid="uid://dy3dlck6qn677"]
 
 [ext_resource type="Script" path="res://scripts/scene_rollup.gd" id="1_7t8q3"]
 [ext_resource type="Texture2D" uid="uid://cmgspxhf4m1nw" path="res://assets/sprites/scene_rollup3.png" id="2_q6db6"]
-[ext_resource type="Texture2D" uid="uid://cban0vvcg1h7p" path="res://assets/sprites/raise right.png" id="3_nlibo"]
-[ext_resource type="Texture2D" uid="uid://c0bvvw8ivogl2" path="res://assets/sprites/idle.png" id="4_japqq"]
-[ext_resource type="Texture2D" uid="uid://u7lxeir5efou" path="res://assets/sprites/cross hands.png" id="5_o3l4p"]
+[ext_resource type="Texture2D" uid="uid://de06j00v8a4qs" path="res://assets/acts/kungfu_red.png" id="3_1ki3l"]
+[ext_resource type="Texture2D" uid="uid://cdkfgo4ca62kw" path="res://assets/acts/idle_red.png" id="4_kq7ri"]
+[ext_resource type="Texture2D" uid="uid://bijo7l1nlmgoc" path="res://assets/acts/crosswave_blue.png" id="5_hxi5j"]
+[ext_resource type="Texture2D" uid="uid://dhv7jvo8jj2gb" path="res://assets/acts/wavearms_red.png" id="6_ia3ld"]
+[ext_resource type="Texture2D" uid="uid://dvnhsp2crffnr" path="res://assets/acts/idle_yellow.png" id="7_jtkki"]
+[ext_resource type="Texture2D" uid="uid://rb50a6twfbv2" path="res://assets/acts/shuffle_yellow.png" id="8_lwfhh"]
+[ext_resource type="Texture2D" uid="uid://c0kfgawudd32v" path="res://assets/acts/wavearms_yellow.png" id="9_wqedi"]
+[ext_resource type="Texture2D" uid="uid://b5b0ngmynaxg" path="res://assets/acts/idle_blue.png" id="10_vq1r2"]
+[ext_resource type="Texture2D" uid="uid://ragq3px1eh3s" path="res://assets/acts/shuffle_blue.png" id="11_gqq6g"]
 
 [sub_resource type="Animation" id="Animation_1e3oj"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Roll:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Roll:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scenes:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scenes:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_lo2t3"]
 resource_name = "scene_down"
@@ -63,7 +25,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1454, -0.25, 0, 0.25, 0, 1454, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
@@ -74,7 +36,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-297, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, 446, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
@@ -85,7 +47,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1458, -0.25, 0, 0.25, 0, 1458, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
@@ -96,7 +58,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-297, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 447, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -110,7 +72,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1454, -0.25, 0, 0.25, 0, 1454, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
@@ -121,7 +83,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(446, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
@@ -132,7 +94,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1458, -0.25, 0, 0.25, 0, 1458, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
@@ -143,7 +105,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(447, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -159,103 +121,103 @@ position = Vector2(0, 890)
 script = ExtResource("1_7t8q3")
 
 [node name="Roll" type="Sprite2D" parent="."]
-position = Vector2(649, 0)
+position = Vector2(1454, -4)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_q6db6")
 
 [node name="Scenes" type="Node2D" parent="."]
-position = Vector2(649, 0)
+position = Vector2(1458, 5)
 
 [node name="Scene1" type="Node2D" parent="Scenes"]
 
 [node name="raise_left" type="Sprite2D" parent="Scenes/Scene1"]
-position = Vector2(-93, -33)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("3_nlibo")
+position = Vector2(-120, -69)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_1ki3l")
 
 [node name="idle" type="Sprite2D" parent="Scenes/Scene1"]
-position = Vector2(0, -31)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("4_japqq")
+position = Vector2(-2, -68)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("4_kq7ri")
 
 [node name="cross" type="Sprite2D" parent="Scenes/Scene1"]
-position = Vector2(96, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(117, -66)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_hxi5j")
 
 [node name="Scene2" type="Node2D" parent="Scenes"]
 
 [node name="cross" type="Sprite2D" parent="Scenes/Scene2"]
-position = Vector2(-86, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(-113, -67)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_hxi5j")
 
 [node name="raise_left" type="Sprite2D" parent="Scenes/Scene2"]
-position = Vector2(2.99999, -33)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("3_nlibo")
+position = Vector2(1, -70)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("6_ia3ld")
 
 [node name="idle" type="Sprite2D" parent="Scenes/Scene2"]
-position = Vector2(91, -31)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("4_japqq")
+position = Vector2(112, -66)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("7_jtkki")
 
 [node name="Scene3" type="Node2D" parent="Scenes"]
 
 [node name="idle" type="Sprite2D" parent="Scenes/Scene3"]
-position = Vector2(-86, -31)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("4_japqq")
+position = Vector2(-113, -67)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("8_lwfhh")
 
 [node name="cross" type="Sprite2D" parent="Scenes/Scene3"]
-position = Vector2(-1, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(-3, -68)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_hxi5j")
 
 [node name="raise_right" type="Sprite2D" parent="Scenes/Scene3"]
-position = Vector2(91, -31)
-scale = Vector2(0.645, 0.645)
-texture = ExtResource("3_nlibo")
+position = Vector2(112, -66)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_1ki3l")
 
 [node name="Scene4" type="Node2D" parent="Scenes"]
 
 [node name="cross" type="Sprite2D" parent="Scenes/Scene4"]
-position = Vector2(-87, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(-114, -67)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_hxi5j")
 
 [node name="idle" type="Sprite2D" parent="Scenes/Scene4"]
-position = Vector2(-1, -31)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("4_japqq")
+position = Vector2(-3, -68)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("7_jtkki")
 
 [node name="cross2" type="Sprite2D" parent="Scenes/Scene4"]
-position = Vector2(88, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(109, -66)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("8_lwfhh")
 
 [node name="Scene5" type="Node2D" parent="Scenes"]
 
 [node name="raise_left" type="Sprite2D" parent="Scenes/Scene5"]
-position = Vector2(-89, -29)
-scale = Vector2(0.665, 0.665)
-texture = ExtResource("3_nlibo")
+position = Vector2(-116, -65)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("9_wqedi")
 
 [node name="cross" type="Sprite2D" parent="Scenes/Scene5"]
-position = Vector2(-1, -31)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_o3l4p")
+position = Vector2(-3, -68)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("10_vq1r2")
 
 [node name="raise_right" type="Sprite2D" parent="Scenes/Scene5"]
-position = Vector2(91, -31)
-scale = Vector2(0.645, 0.645)
-texture = ExtResource("3_nlibo")
+position = Vector2(112, -66)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("11_gqq6g")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 311.0
-offset_top = -616.0
-offset_right = 972.0
-offset_bottom = -478.0
+offset_left = 1.0
+offset_top = -473.0
+offset_right = 662.0
+offset_bottom = -335.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 45
 theme_override_font_sizes/font_size = 101

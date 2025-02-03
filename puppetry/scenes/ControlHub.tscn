@@ -21,11 +21,12 @@ offset_bottom = 678.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 35
-item_count = 4
+item_count = 5
 item_0/text = "Idle"
-item_1/text = "Raise Right Hand"
-item_2/text = "Raise Left Hand"
-item_3/text = "Cross Hands"
+item_1/text = "Kung Fu"
+item_2/text = "Wave Arms"
+item_3/text = "Cross Wave"
+item_4/text = "Shuffle"
 script = ExtResource("1_5x8uw")
 
 [connection signal="item_activated" from="ActionMenu" to="ActionMenu" method="_on_item_activated"]
