@@ -21,6 +21,7 @@ var direction: String
 @onready var op6: Marker2D = $op6
 
 
+
 var return_to_original = false
 var displayed_scene
 @onready var animation_player: AnimationPlayer = $SceneRollup/AnimationPlayer
@@ -60,6 +61,7 @@ func _ready() -> void:
 		outline.visible = false
 
 func _process(delta: float) -> void:
+	delta_Var=delta
 	puppet_cutscene(delta, pos_chosen)
 	
 	# display score
@@ -133,8 +135,8 @@ func _on_puppet_clicked(colour, key):
 	for puppet in puppets.get_children():
 		if puppet.key == key:
 			chosen_puppet = puppet
-		
 	chosen_puppet.EnterAction.emit()
+
 	print(chosen_puppet.name)
 	colour_chosen = chosen_puppet.colour
 	
@@ -261,6 +263,15 @@ func reset():
 	hidden_outlines = [0,0,0]
 	
 	for puppet in puppets.get_children():
+		#if puppet.global_position==one_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(one_down.global_position, delta_Var*cutscene_speed)
+			#
+		#if puppet.global_position==two_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(two_down.global_position,  delta_Var*cutscene_speed)
+			#
+		#if puppet.global_position==three_up.global_position:
+			#puppet.global_position=puppet.global_position.move_toward(three_down.global_position, delta_Var*cutscene_speed)
+			#return_to_original=true
 		if puppet.global_position==one_up.global_position:
 			return_to_original = true
 			
@@ -291,6 +302,7 @@ func reset():
 		puppet.ExitAction.emit() # no idea what this does bas khayfa ashelo
 		
 		# scene change
+
 		animation_player.play("scene_down")
 		score.visible = false
 		Globals.scene_key = Globals.scene_key + 1
