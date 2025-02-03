@@ -12,6 +12,7 @@ var chosen_puppet
 var colour_chosen
 var hidden_outlines = [0,0,0]
 var direction: String
+var delta_Var
 
 @onready var op1: Marker2D = $op1
 @onready var op2: Marker2D = $op2
@@ -300,7 +301,7 @@ func reset():
 			return_to_original = false
 		
 		puppet.ExitAction.emit() # no idea what this does bas khayfa ashelo
-		
+		puppet.ResetTimers.emit()
 		# scene change
 
 		animation_player.play("scene_down")

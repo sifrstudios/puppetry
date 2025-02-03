@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal move_puppet
 signal EnterAction
 signal ExitAction
+signal ResetTimers
 
 enum puppet_colors{
 	Red,
