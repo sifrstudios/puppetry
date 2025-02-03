@@ -4,8 +4,8 @@ var action_selected
 var position_selected
 var colour_selected
 var current_scene = 1
-var scene_counter=0
-var scene_key=0
+var scene_counter = 0
+var scene_key = 0
 var puppet_key = 0
 var previous_action
 

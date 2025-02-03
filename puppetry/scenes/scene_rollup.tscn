@@ -1,57 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dy3dlck6qn677"]
 
 [ext_resource type="Script" path="res://scripts/scene_rollup.gd" id="1_7t8q3"]
-[ext_resource type="Texture2D" uid="uid://dcewoptcfh63n" path="res://assets/sprites/scene rollup.png" id="1_tu1m7"]
+[ext_resource type="Texture2D" uid="uid://cmgspxhf4m1nw" path="res://assets/sprites/scene_rollup3.png" id="2_q6db6"]
 [ext_resource type="Texture2D" uid="uid://cban0vvcg1h7p" path="res://assets/sprites/raise right.png" id="3_nlibo"]
 [ext_resource type="Texture2D" uid="uid://c0bvvw8ivogl2" path="res://assets/sprites/idle.png" id="4_japqq"]
 [ext_resource type="Texture2D" uid="uid://u7lxeir5efou" path="res://assets/sprites/cross hands.png" id="5_o3l4p"]
-
-[sub_resource type="Animation" id="Animation_2rmfd"]
-resource_name = "scene_up"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Roll:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Roll:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scenes:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scenes:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_1e3oj"]
 length = 0.001
@@ -147,6 +100,53 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_2rmfd"]
+resource_name = "scene_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roll:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Roll:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenes:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(649, -0.25, 0, 0.25, 0, 649, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenes:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -297, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_macev"]
 _data = {
 "RESET": SubResource("Animation_1e3oj"),
@@ -160,8 +160,8 @@ script = ExtResource("1_7t8q3")
 
 [node name="Roll" type="Sprite2D" parent="."]
 position = Vector2(649, 0)
-scale = Vector2(0.555, 0.555)
-texture = ExtResource("1_tu1m7")
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("2_q6db6")
 
 [node name="Scenes" type="Node2D" parent="."]
 position = Vector2(649, 0)

@@ -17,7 +17,6 @@ func _ready() -> void:
 
 
 func _on_display_scene():
-	print(Globals.current_scene)
 	match Globals.current_scene:
 		1:
 			displayed_scene = scene_1
